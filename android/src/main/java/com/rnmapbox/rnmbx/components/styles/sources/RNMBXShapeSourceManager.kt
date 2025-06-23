@@ -26,31 +26,31 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     AbstractEventEmitter<RNMBXShapeSource>(
         mContext
     ), RNMBXShapeSourceManagerInterface<RNMBXShapeSource> {
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXShapeSource {
+    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXShapeSource {
         return RNMBXShapeSource(reactContext, this)
     }
 
-    override fun getChildAt(source: RNMBXShapeSource, childPosition: Int): View {
+    override override fun getChildAt(source: RNMBXShapeSource, childPosition: Int): View {
         return source.getChildAt(childPosition)
     }
 
-    override fun getChildCount(source: RNMBXShapeSource): Int {
+    override override fun getChildCount(source: RNMBXShapeSource): Int {
         return source.childCount
     }
 
-    override fun addView(source: RNMBXShapeSource, childView: View, childPosition: Int) {
+    override override fun addView(source: RNMBXShapeSource, childView: View, childPosition: Int) {
         source.addLayer(childView, getChildCount(source))
     }
 
-    override fun removeViewAt(source: RNMBXShapeSource, childPosition: Int) {
+    override override fun removeViewAt(source: RNMBXShapeSource, childPosition: Int) {
         source.removeLayer(childPosition)
     }
 
-    override fun onDropViewInstance(view: RNMBXShapeSource) {
+    override override fun onDropViewInstance(view: RNMBXShapeSource) {
         val reactTag = view.id
 
         viewTagResolver.viewRemoved(reactTag)
@@ -62,17 +62,17 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "id")
-    override fun setId(source: RNMBXShapeSource, id: Dynamic) {
+    override override fun setId(source: RNMBXShapeSource, id: Dynamic) {
         source.iD = id.asString()
     }
 
     @ReactProp(name = "existing")
-    override fun setExisting(source: RNMBXShapeSource, existing: Dynamic) {
+    override override fun setExisting(source: RNMBXShapeSource, existing: Dynamic) {
         source.mExisting = existing.asBoolean()
     }
 
     @ReactProp(name = "url")
-    override fun setUrl(source: RNMBXShapeSource, urlStr: Dynamic) {
+    override override fun setUrl(source: RNMBXShapeSource, urlStr: Dynamic) {
         try {
             source.setURL(URL(urlStr.asString()))
         } catch (e: MalformedURLException) {
@@ -81,27 +81,27 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "shape")
-    override fun setShape(source: RNMBXShapeSource, geoJSONStr: Dynamic) {
+    override override fun setShape(source: RNMBXShapeSource, geoJSONStr: Dynamic) {
         source.setShape(geoJSONStr.asString())
     }
 
     @ReactProp(name = "cluster")
-    override fun setCluster(source: RNMBXShapeSource, cluster: Dynamic) {
+    override override fun setCluster(source: RNMBXShapeSource, cluster: Dynamic) {
         source.setCluster(cluster.asInt() == 1)
     }
 
     @ReactProp(name = "clusterRadius")
-    override fun setClusterRadius(source: RNMBXShapeSource, radius: Dynamic) {
+    override override fun setClusterRadius(source: RNMBXShapeSource, radius: Dynamic) {
         source.setClusterRadius(radius.asInt().toLong())
     }
 
     @ReactProp(name = "clusterMaxZoomLevel")
-    override fun setClusterMaxZoomLevel(source: RNMBXShapeSource, clusterMaxZoom: Dynamic) {
+    override override fun setClusterMaxZoomLevel(source: RNMBXShapeSource, clusterMaxZoom: Dynamic) {
         source.setClusterMaxZoom(clusterMaxZoom.asInt().toLong())
     }
 
     @ReactProp(name = "clusterProperties")
-    override fun setClusterProperties(source: RNMBXShapeSource, map: Dynamic) {
+    override override fun setClusterProperties(source: RNMBXShapeSource, map: Dynamic) {
         val properties = HashMap<String, Any>()
         val iterator = map.asMap().keySetIterator()
         while (iterator.hasNextKey()) {
@@ -129,36 +129,36 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "maxZoomLevel")
-    override fun setMaxZoomLevel(source: RNMBXShapeSource, maxZoom: Dynamic) {
+    override override fun setMaxZoomLevel(source: RNMBXShapeSource, maxZoom: Dynamic) {
         source.setMaxZoom(maxZoom.asInt().toLong())
     }
 
     @ReactProp(name = "buffer")
-    override fun setBuffer(source: RNMBXShapeSource, buffer: Dynamic) {
+    override override fun setBuffer(source: RNMBXShapeSource, buffer: Dynamic) {
         source.setBuffer(buffer.asInt().toLong())
     }
 
     @ReactProp(name = "tolerance")
-    override fun setTolerance(source: RNMBXShapeSource, tolerance: Dynamic) {
+    override override fun setTolerance(source: RNMBXShapeSource, tolerance: Dynamic) {
         source.setTolerance(tolerance.asDouble())
     }
 
     @ReactProp(name = "lineMetrics")
-    override fun setLineMetrics(source: RNMBXShapeSource, lineMetrics: Dynamic) {
+    override override fun setLineMetrics(source: RNMBXShapeSource, lineMetrics: Dynamic) {
         source.setLineMetrics(lineMetrics.asBoolean())
     }
 
     @ReactProp(name = "hasPressListener")
-    override fun setHasPressListener(source: RNMBXShapeSource, hasPressListener: Dynamic) {
+    override override fun setHasPressListener(source: RNMBXShapeSource, hasPressListener: Dynamic) {
         source.setHasPressListener(hasPressListener.asBoolean())
     }
 
     @ReactProp(name = "hitbox")
-    override fun setHitbox(source: RNMBXShapeSource, map: Dynamic) {
+    override override fun setHitbox(source: RNMBXShapeSource, map: Dynamic) {
         source.setHitbox(map.asMap())
     }
 
-    override fun customEvents(): Map<String, String>? {
+    override override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.SHAPE_SOURCE_LAYER_CLICK to "onMapboxShapeSourcePress",
             EventKeys.MAP_ANDROID_CALLBACK to "onAndroidCallback"

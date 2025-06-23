@@ -17,20 +17,20 @@ class RNMBXAtmosphereManager : ViewGroupManager<RNMBXAtmosphere>(),
         mDelegate = RNMBXAtmosphereManagerDelegate(this)
     }
 
-    override fun getDelegate(): ViewManagerDelegate<RNMBXAtmosphere> {
+    override override fun getDelegate(): ViewManagerDelegate<RNMBXAtmosphere> {
         return mDelegate
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXAtmosphere {
+    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXAtmosphere {
         return RNMBXAtmosphere(reactContext)
     }
 
     @ReactProp(name = "reactStyle")
-    fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
+    override fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
         atmosphere.setReactStyle(reactStyle.asMap())
     }
 

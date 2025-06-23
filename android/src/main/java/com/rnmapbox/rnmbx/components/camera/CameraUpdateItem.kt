@@ -111,7 +111,7 @@ class CameraUpdateItem(
         }
     }
 
-    override fun cancel(mayInterruptIfRunning: Boolean): Boolean {
+    override override fun cancel(mayInterruptIfRunning: Boolean): Boolean {
         return false
     }
 

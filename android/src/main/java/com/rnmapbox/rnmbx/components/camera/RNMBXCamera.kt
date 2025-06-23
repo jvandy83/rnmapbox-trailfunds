@@ -116,7 +116,7 @@ class RNMBXCamera(private val mContext: Context, private val mManager: RNMBXCame
             return super.removeFromMap(mapView, reason);
         }
     }
-    fun setStop(stop: CameraStop) {
+    override fun setStop(stop: CameraStop) {
         mCameraStop = stop
         stop.setCallback(mCameraCallback)
         withMapView { mapView ->
@@ -129,36 +129,36 @@ class RNMBXCamera(private val mContext: Context, private val mManager: RNMBXCame
         setStop(stop)
     }
 
-    fun setDefaultStop(stop: CameraStop?) {
+    override fun setDefaultStop(stop: CameraStop?) {
         mDefaultStop = stop
     }
 
-    fun setFollowUserMode(mode: String?) {
+    override fun setFollowUserMode(mode: String?) {
         mFollowUserMode = mode
         _updateViewportState()
     }
 
-    fun setFollowUserLocation(value: Boolean?) {
+    override fun setFollowUserLocation(value: Boolean?) {
         mFollowUserLocation = value ?: defaultFollowUserLocation
         _updateViewportState()
     }
 
-    fun setFollowZoomLevel(zoomLevel: Double?) {
+    override fun setFollowZoomLevel(zoomLevel: Double?) {
         mFollowZoomLevel = zoomLevel
         _updateViewportState();
     }
 
-    fun setFollowPitch(pitch: Double?) {
+    override fun setFollowPitch(pitch: Double?) {
         mFollowPitch = pitch
         _updateViewportState();
     }
 
-    fun setFollowHeading(heading: Double?) {
+    override fun setFollowHeading(heading: Double?) {
         mFollowHeading = heading
         _updateViewportState();
     }
 
-    fun setFollowPadding(padding: ReadableMap) {
+    override fun setFollowPadding(padding: ReadableMap) {
         // scale padding by pixel ratio
         val metrics = context.resources.displayMetrics
         val edgeInsets = EdgeInsets(
@@ -172,7 +172,7 @@ class RNMBXCamera(private val mContext: Context, private val mManager: RNMBXCame
         _updateViewportState();
     }
 
-    fun setMaxBounds(bounds: LatLngBounds?) {
+    override fun setMaxBounds(bounds: LatLngBounds?) {
         mMaxBounds = bounds
         withMapView { mapView ->
             updateMaxBounds(mapView)
@@ -242,17 +242,17 @@ class RNMBXCamera(private val mContext: Context, private val mManager: RNMBXCame
         mLocationComponentManager!!.update()
     }
 
-    fun setMinZoomLevel(zoomLevel: Double?) {
+    override fun setMinZoomLevel(zoomLevel: Double?) {
         mMinZoomLevel = zoomLevel
         withMapView { updateMaxBounds(it) }
     }
 
-    fun setMaxZoomLevel(zoomLevel: Double?) {
+    override fun setMaxZoomLevel(zoomLevel: Double?) {
         mMaxZoomLevel = zoomLevel
         withMapView { updateMaxBounds(it) }
     }
 
-    fun setZoomLevel(zoomLevel: Double) {
+    override fun setZoomLevel(zoomLevel: Double) {
         mZoomLevel = zoomLevel
         updateCameraPositionIfNeeded(false)
     }
@@ -281,7 +281,7 @@ class RNMBXCamera(private val mContext: Context, private val mManager: RNMBXCame
         }
     }
 
-    fun setUserTrackingMode(userTrackingMode: Int) {
+    override fun setUserTrackingMode(userTrackingMode: Int) {
         val oldTrackingMode = mUserTrackingMode
         mUserTrackingMode = userTrackingMode
         mManager.handleEvent(MapUserTrackingModeEvent(this@RNMBXCamera, userTrackingMode))

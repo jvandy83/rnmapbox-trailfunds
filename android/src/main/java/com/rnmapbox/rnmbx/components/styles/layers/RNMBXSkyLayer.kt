@@ -37,7 +37,7 @@ class RNMBXSkyLayer(context: Context?) : RNMBXLayer<SkyLayer?>(
         }
     }
 
-    fun setSourceLayerID(sourceLayerID: String?) {
+    override fun setSourceLayerID(sourceLayerID: String?) {
         e("RNMBXSkyLayer", "Source layer should not be set for source layer id")
     }
 }

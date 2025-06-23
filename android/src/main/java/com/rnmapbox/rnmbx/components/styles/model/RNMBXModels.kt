@@ -10,7 +10,7 @@ import java.net.URI
 class RNMBXModels(context: Context?) : AbstractMapFeature(context) {
     private var models: Map<String, String>? = null;
 
-    fun setModels(value: Map<String,String>) {
+    override fun setModels(value: Map<String,String>) {
         this.models = value;
         applyModels()
     }

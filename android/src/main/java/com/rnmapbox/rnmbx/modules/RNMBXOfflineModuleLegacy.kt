@@ -51,7 +51,7 @@ class RNMBXOfflineModuleLegacy(private val mReactContext: ReactApplicationContex
         const val COMPLETE_REGION_DOWNLOAD_STATE = 2
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 

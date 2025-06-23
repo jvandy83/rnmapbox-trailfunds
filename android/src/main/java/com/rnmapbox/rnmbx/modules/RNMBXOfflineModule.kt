@@ -115,7 +115,7 @@ class RNMBXOfflineModule(private val mReactContext: ReactApplicationContext) :
         }
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 

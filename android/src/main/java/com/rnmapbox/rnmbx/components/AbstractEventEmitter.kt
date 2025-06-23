@@ -69,7 +69,7 @@ abstract class AbstractEventEmitter<T : ViewGroup>(reactApplicationContext: Reac
         return exportedEvents
     }
 
-    abstract fun customEvents(): Map<String, String>?
+    abstract override fun customEvents(): Map<String, String>?
     private fun shouldDropEvent(cacheKey: String, event: IEvent): Boolean {
         val lastEventTimestamp = mRateLimitedEvents[cacheKey]
         return lastEventTimestamp != null && event.timestamp - lastEventTimestamp <= BRIDGE_TIMEOUT_MS

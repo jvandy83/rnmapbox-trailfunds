@@ -67,7 +67,7 @@ class RNMBXLocationModule(reactContext: ReactApplicationContext) :
         reactContext.addLifecycleEventListener(lifecycleEventListener)
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 
@@ -104,7 +104,7 @@ class RNMBXLocationModule(reactContext: ReactApplicationContext) :
     fun getLastKnownLocation(promise: Promise) {
         locationManager!!.getLastKnownLocation(
             object : LocationEngineCallback {
-                override fun onSuccess(result: LocationEngineResult) {
+                override override fun onSuccess(result: LocationEngineResult) {
                     val location = result.lastLocation
                     if (location != null) {
                         val locationEvent = LocationEvent(location)
@@ -114,7 +114,7 @@ class RNMBXLocationModule(reactContext: ReactApplicationContext) :
                     }
                 }
 
-                override fun onFailure(exception: Exception) {
+                override override fun onFailure(exception: Exception) {
                     promise.reject(exception)
                 }
             }

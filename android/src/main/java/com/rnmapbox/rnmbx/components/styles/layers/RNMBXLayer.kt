@@ -42,7 +42,7 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
 
     protected var mExisting : Boolean? = null
 
-    fun setSourceID(sourceID: String?) {
+    override fun setSourceID(sourceID: String?) {
         mSourceID = sourceID
     }
 
@@ -53,7 +53,7 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
         return iD;
     }
 
-    fun setAboveLayerID(aboveLayerID: String?) {
+    override fun setAboveLayerID(aboveLayerID: String?) {
         if (mAboveLayerID != null && mAboveLayerID == aboveLayerID) {
             return
         }
@@ -67,7 +67,7 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
         }
     }
 
-    fun setBelowLayerID(belowLayerID: String?) {
+    override fun setBelowLayerID(belowLayerID: String?) {
         if (mBelowLayerID != null && mBelowLayerID == belowLayerID) {
             return
         }
@@ -81,7 +81,7 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
         }
     }
 
-    fun setLayerIndex(layerIndex: Int) {
+    override fun setLayerIndex(layerIndex: Int) {
         if (mLayerIndex != null && mLayerIndex == layerIndex) {
             return
         }
@@ -92,35 +92,35 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
         }
     }
 
-    fun setVisible(visible: Boolean) {
+    override fun setVisible(visible: Boolean) {
         mVisible = visible
         if (mLayer != null) {
             mLayer!!.visibility(if (mVisible) Visibility.VISIBLE else Visibility.NONE)
         }
     }
 
-    fun setMinZoomLevel(minZoomLevel: Double) {
+    override fun setMinZoomLevel(minZoomLevel: Double) {
         mMinZoomLevel = minZoomLevel
         if (mLayer != null) {
             mLayer!!.minZoom(minZoomLevel.toFloat().toDouble())
         }
     }
 
-    fun setMaxZoomLevel(maxZoomLevel: Double) {
+    override fun setMaxZoomLevel(maxZoomLevel: Double) {
         mMaxZoomLevel = maxZoomLevel
         mLayer?.let {
            it.maxZoom(maxZoomLevel.toFloat().toDouble())
         }
     }
 
-    fun setReactStyle(reactStyle: ReadableMap?) {
+    override fun setReactStyle(reactStyle: ReadableMap?) {
         mReactStyle = reactStyle
         if (mLayer != null) {
             addStyles()
         }
     }
 
-    fun setFilter(readableFilterArray: ReadableArray?) {
+    override fun setFilter(readableFilterArray: ReadableArray?) {
         val filterExpression = ExpressionParser.from(readableFilterArray)
         mFilter = filterExpression
         if (mLayer != null) {
@@ -135,12 +135,12 @@ abstract class RNMBXLayer<T : Layer?>(protected var mContext: Context) : Abstrac
 
     var mSlot: String? = null
 
-    fun setSlot(slot: String?) {
+    override fun setSlot(slot: String?) {
         mSlot = slot
         applySlot()
     }
 
-    fun setExisting(existing: Boolean) {
+    override fun setExisting(existing: Boolean) {
         mExisting = existing
     }
 

@@ -34,7 +34,7 @@ class RNMBXSnapshotModule(private val mContext: ReactApplicationContext) :
         mSnapshotterMap = HashMap()
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 

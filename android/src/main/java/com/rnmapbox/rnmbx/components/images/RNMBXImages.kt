@@ -71,7 +71,7 @@ class RNMBXImages(context: Context, private val mManager: RNMBXImagesManager) : 
     private var mSendMissingImageEvents = false
     private var mMap: MapboxMap? = null
 
-    fun setImages(images: List<Map.Entry<String, ImageEntry>>) {
+    override fun setImages(images: List<Map.Entry<String, ImageEntry>>) {
         val newImages: MutableMap<String, ImageEntry> = HashMap()
         for ((key, value) in images) {
             val oldValue = mImages?.put(key, value)
@@ -84,7 +84,7 @@ class RNMBXImages(context: Context, private val mManager: RNMBXImagesManager) : 
         }
     }
 
-    fun setNativeImages(nativeImages: List<NativeImage>) {
+    override fun setNativeImages(nativeImages: List<NativeImage>) {
         val newImages: MutableMap<String, NativeImage> = HashMap()
         for (nativeImage in nativeImages) {
             val name = nativeImage.info.name
@@ -100,7 +100,7 @@ class RNMBXImages(context: Context, private val mManager: RNMBXImagesManager) : 
         }
     }
 
-    fun setHasOnImageMissing(value: Boolean) {
+    override fun setHasOnImageMissing(value: Boolean) {
         mSendMissingImageEvents = value
     }
 

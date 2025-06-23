@@ -8,66 +8,66 @@ import com.facebook.react.viewmanagers.RNMBXFillExtrusionLayerManagerInterface
 
 class RNMBXFillExtrusionLayerManager : ViewGroupManager<RNMBXFillExtrusionLayer>(),
     RNMBXFillExtrusionLayerManagerInterface<RNMBXFillExtrusionLayer> {
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXFillExtrusionLayer {
+    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXFillExtrusionLayer {
         return RNMBXFillExtrusionLayer(reactContext)
     }
 
     @ReactProp(name = "id")
-    override fun setId(layer: RNMBXFillExtrusionLayer, id: Dynamic) {
+    override override fun setId(layer: RNMBXFillExtrusionLayer, id: Dynamic) {
         layer.iD = id.asString()
     }
 
     @ReactProp(name = "existing")
-    override fun setExisting(layer: RNMBXFillExtrusionLayer, existing: Dynamic) {
+    override override fun setExisting(layer: RNMBXFillExtrusionLayer, existing: Dynamic) {
         layer.setExisting(existing.asBoolean())
     }
 
     @ReactProp(name = "sourceID")
-    override fun setSourceID(layer: RNMBXFillExtrusionLayer, sourceID: Dynamic) {
+    override override fun setSourceID(layer: RNMBXFillExtrusionLayer, sourceID: Dynamic) {
         layer.setSourceID(sourceID.asString())
     }
 
     @ReactProp(name = "aboveLayerID")
-    override fun setAboveLayerID(layer: RNMBXFillExtrusionLayer, aboveLayerID: Dynamic) {
+    override override fun setAboveLayerID(layer: RNMBXFillExtrusionLayer, aboveLayerID: Dynamic) {
         layer.setAboveLayerID(aboveLayerID.asString())
     }
 
     @ReactProp(name = "belowLayerID")
-    override fun setBelowLayerID(layer: RNMBXFillExtrusionLayer, belowLayerID: Dynamic) {
+    override override fun setBelowLayerID(layer: RNMBXFillExtrusionLayer, belowLayerID: Dynamic) {
         layer.setBelowLayerID(belowLayerID.asString())
     }
 
     @ReactProp(name = "layerIndex")
-    override fun setLayerIndex(layer: RNMBXFillExtrusionLayer, layerIndex: Dynamic) {
+    override override fun setLayerIndex(layer: RNMBXFillExtrusionLayer, layerIndex: Dynamic) {
         layer.setLayerIndex(layerIndex.asInt())
     }
 
     @ReactProp(name = "minZoomLevel")
-    override fun setMinZoomLevel(layer: RNMBXFillExtrusionLayer, minZoomLevel: Dynamic) {
+    override override fun setMinZoomLevel(layer: RNMBXFillExtrusionLayer, minZoomLevel: Dynamic) {
         layer.setMinZoomLevel(minZoomLevel.asDouble())
     }
 
     @ReactProp(name = "maxZoomLevel")
-    override fun setMaxZoomLevel(layer: RNMBXFillExtrusionLayer, maxZoomLevel: Dynamic) {
+    override override fun setMaxZoomLevel(layer: RNMBXFillExtrusionLayer, maxZoomLevel: Dynamic) {
         layer.setMaxZoomLevel(maxZoomLevel.asDouble())
     }
 
     @ReactProp(name = "reactStyle")
-    override fun setReactStyle(layer: RNMBXFillExtrusionLayer, style: Dynamic) {
+    override override fun setReactStyle(layer: RNMBXFillExtrusionLayer, style: Dynamic) {
         layer.setReactStyle(style.asMap())
     }
 
     @ReactProp(name = "sourceLayerID")
-    override fun setSourceLayerID(layer: RNMBXFillExtrusionLayer, sourceLayerID: Dynamic) {
+    override override fun setSourceLayerID(layer: RNMBXFillExtrusionLayer, sourceLayerID: Dynamic) {
         layer.setSourceLayerID(sourceLayerID.asString())
     }
 
     @ReactProp(name = "filter")
-    override fun setFilter(layer: RNMBXFillExtrusionLayer, filterList: Dynamic) {
+    override override fun setFilter(layer: RNMBXFillExtrusionLayer, filterList: Dynamic) {
         layer.setFilter(filterList.asArray())
     }
 

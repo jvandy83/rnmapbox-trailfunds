@@ -27,11 +27,11 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     AbstractEventEmitter<RNMBXImages>(
         mContext
     ), RNMBXImagesManagerInterface<RNMBXImages> {
-    override fun getName(): String {
+    override override fun getName(): String {
         return "RNMBXImages"
     }
 
-    public override fun createViewInstance(context: ThemedReactContext): RNMBXImages {
+    public override override fun createViewInstance(context: ThemedReactContext): RNMBXImages {
         return RNMBXImages(context, this)
     }
 
@@ -73,7 +73,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "images")
-    override fun setImages(images: RNMBXImages, map: Dynamic) {
+    override override fun setImages(images: RNMBXImages, map: Dynamic) {
         val imagesList = mutableListOf<Map.Entry<String, ImageEntry>>()
         map.asMap().forEach { imageName, imageInfo ->
             when (imageInfo) {
@@ -134,7 +134,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "hasOnImageMissing")
-    override fun setHasOnImageMissing(images: RNMBXImages, value: Dynamic) {
+    override override fun setHasOnImageMissing(images: RNMBXImages, value: Dynamic) {
         images.setHasOnImageMissing(value.asBoolean())
     }
 
@@ -192,7 +192,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "nativeImages")
-    override fun setNativeImages(images: RNMBXImages, arr: Dynamic) {
+    override override fun setNativeImages(images: RNMBXImages, arr: Dynamic) {
         val nativeImages = mutableListOf<NativeImage>();
         for (i in 0 until arr.asArray().size()) {
             val nativeImage = toNativeImage(arr.asArray().getDynamic(i))
@@ -203,13 +203,13 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
         images.setNativeImages(nativeImages)
     }
 
-    override fun customEvents(): Map<String, String>? { return eventMapOf(
+    override override fun customEvents(): Map<String, String>? { return eventMapOf(
             EventKeys.IMAGES_MISSING to "onImageMissing"
         )
     }
 
     // region RNMBXImage children
-    override fun addView(parent: RNMBXImages, childView: View, childPosition: Int) {
+    override override fun addView(parent: RNMBXImages, childView: View, childPosition: Int) {
         if (childView !is RNMBXImage) {
             Logger.e("RNMBXImages", "child view should be RNMBXImage")
             return
@@ -219,7 +219,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
         childView.nativeImageUpdater = parent
     }
 
-    override fun removeView(parent: RNMBXImages, view: View) {
+    override override fun removeView(parent: RNMBXImages, view: View) {
         if (parent == null || view == null) {
             Logger.e("RNMBXImages", "removeView: parent or view is null")
             return
@@ -228,7 +228,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
         parent.mImageViews.remove(view)
     }
 
-    override fun removeAllViews(parent: RNMBXImages) {
+    override override fun removeAllViews(parent: RNMBXImages) {
         parent.mImageViews.clear()
     }
 

@@ -39,7 +39,7 @@ class RNMBXSymbolLayer(context: Context?) : RNMBXLayer<SymbolLayer?>(
         }
     }
 
-    fun setSourceLayerID(sourceLayerID: String?) {
+    override fun setSourceLayerID(sourceLayerID: String?) {
         mSourceLayerID = sourceLayerID
         if (mLayer != null) {
             mLayer!!.sourceLayer(sourceLayerID!!)

@@ -26,7 +26,7 @@ class RNMBXLight(context: Context?) : AbstractMapFeature(context) {
         return super.removeFromMap(mapView, reason)
     }
 
-    fun setReactStyle(reactStyle: ReadableMap?) {
+    override fun setReactStyle(reactStyle: ReadableMap?) {
         mReactStyle = reactStyle
         setLight()
     }

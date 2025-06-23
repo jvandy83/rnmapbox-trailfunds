@@ -18,12 +18,12 @@ package com.rnmapbox.rnmbx.utils
  *
  *     var logoPosition: LogoPosition;
  *
- *     fun setLogoPosition(value: LogoPosition) {
+ *     override fun setLogoPosition(value: LogoPosition) {
  *        logoPosition = value
  *        changes.add(Property::LOGO_POSITION)
  *     }
  *
- *     fun setGestureSettings(value: Custom) {
+ *     override fun setGestureSettings(value: Custom) {
  *         changes.add(Property::CUSTOM("gestures") {
  *            mapboxMap.updateGestures(...)
  *         })

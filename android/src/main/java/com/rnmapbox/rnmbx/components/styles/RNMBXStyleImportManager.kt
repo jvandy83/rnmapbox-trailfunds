@@ -19,15 +19,15 @@ import org.json.JSONObject
 class RNMBXStyleImportManager(context: ReactApplicationContext) :
     AbstractEventEmitter<RNMBXStyleImport>(context),
     RNMBXStyleImportManagerInterface<RNMBXStyleImport> {
-    override fun customEvents(): Map<String, String>? {
+    override override fun customEvents(): Map<String, String>? {
         return MapBuilder.builder<String, String>().build()
     }
 
-    override fun getName(): String {
+    override override fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(context: ThemedReactContext): RNMBXStyleImport {
+    override override fun createViewInstance(context: ThemedReactContext): RNMBXStyleImport {
         return RNMBXStyleImport(context)
     }
 
@@ -36,19 +36,19 @@ class RNMBXStyleImportManager(context: ReactApplicationContext) :
     }
 
     @ReactProp(name = "id")
-    override fun setId(view: RNMBXStyleImport, value: String?) {
+    override override fun setId(view: RNMBXStyleImport, value: String?) {
         if (value != null) {
             view.id = value
         }
     }
 
     @ReactProp(name = "existing")
-    override fun setExisting(view: RNMBXStyleImport, value: Boolean) {
+    override override fun setExisting(view: RNMBXStyleImport, value: Boolean) {
 
     }
 
     @ReactProp(name = "config")
-    override fun setConfig(view: RNMBXStyleImport, value: Dynamic) {
+    override override fun setConfig(view: RNMBXStyleImport, value: Dynamic) {
         if (value.type != ReadableType.Map) {
             Logger.e(REACT_CLASS, "config expected Map but received: ${value.type}")
         } else {

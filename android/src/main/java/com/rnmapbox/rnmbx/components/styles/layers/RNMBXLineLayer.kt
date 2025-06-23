@@ -36,7 +36,7 @@ class RNMBXLineLayer(context: Context?) : RNMBXLayer<LineLayer?>(
         }
     }
 
-    fun setSourceLayerID(sourceLayerID: String?) {
+    override fun setSourceLayerID(sourceLayerID: String?) {
         mSourceLayerID = sourceLayerID
         if (mLayer != null) {
             mLayer!!.sourceLayer(mSourceLayerID!!)
