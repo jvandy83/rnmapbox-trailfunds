@@ -54,7 +54,7 @@ class RNMBXTileStoreModule(private val mReactContext: ReactApplicationContext) :
     promise.resolve(null)
   }
 
-  override override fun getName(): String {
+  override fun getName(): String {
     return REACT_CLASS
   }
 

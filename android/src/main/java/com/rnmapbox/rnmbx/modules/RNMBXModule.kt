@@ -30,7 +30,7 @@ class RNMBXModule(private val mReactContext: ReactApplicationContext) : ReactCon
     mReactContext
 ) {
     private val mUiThreadHandler: Handler? = null
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 

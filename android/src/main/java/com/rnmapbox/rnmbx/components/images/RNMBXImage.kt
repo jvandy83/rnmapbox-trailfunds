@@ -28,7 +28,7 @@ class RNMBXImage(private val mContext: ReactApplicationContext, private val mMan
 
     var mBitmap : Bitmap? = null
 
-    override override fun setId(id: Int) {
+    override fun setId(id: Int) {
         super.setId(id)
         mManager.tagAssigned(id)
     }
@@ -64,7 +64,7 @@ class RNMBXImage(private val mContext: ReactApplicationContext, private val mMan
         }
     }
 
-    override override fun addView(childView: View, childPosition: Int) {
+    override fun addView(childView: View, childPosition: Int) {
         if (childPosition != 0) {
             Logger.e("RNMBXImage", "expected a single subview got childView:$childView position:$childPosition")
         }

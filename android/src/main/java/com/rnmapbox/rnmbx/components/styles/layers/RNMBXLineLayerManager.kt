@@ -8,72 +8,72 @@ import com.facebook.react.viewmanagers.RNMBXLineLayerManagerInterface
 
 class RNMBXLineLayerManager : ViewGroupManager<RNMBXLineLayer>(),
     RNMBXLineLayerManagerInterface<RNMBXLineLayer> {
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXLineLayer {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXLineLayer {
         return RNMBXLineLayer(reactContext)
     }
 
     // @{codepart-replace-start(LayerManagerCommonProps.codepart-kt.ejs,{layerType:"RNMBXLineLayer"})}
     @ReactProp(name = "id")
-    override override fun setId(layer: RNMBXLineLayer, id: Dynamic) {
+    override fun setId(layer: RNMBXLineLayer, id: Dynamic) {
         layer.iD = id.asString()
     }
 
     @ReactProp(name = "existing")
-    override override fun setExisting(layer: RNMBXLineLayer, existing: Dynamic) {
+    override fun setExisting(layer: RNMBXLineLayer, existing: Dynamic) {
         layer.setExisting(existing.asBoolean())
     }
 
     @ReactProp(name = "sourceID")
-    override override fun setSourceID(layer: RNMBXLineLayer, sourceID: Dynamic) {
+    override fun setSourceID(layer: RNMBXLineLayer, sourceID: Dynamic) {
         layer.setSourceID(sourceID.asString())
     }
 
     @ReactProp(name = "aboveLayerID")
-    override override fun setAboveLayerID(layer: RNMBXLineLayer, aboveLayerID: Dynamic) {
+    override fun setAboveLayerID(layer: RNMBXLineLayer, aboveLayerID: Dynamic) {
         layer.setAboveLayerID(aboveLayerID.asString())
     }
 
     @ReactProp(name = "belowLayerID")
-    override override fun setBelowLayerID(layer: RNMBXLineLayer, belowLayerID: Dynamic) {
+    override fun setBelowLayerID(layer: RNMBXLineLayer, belowLayerID: Dynamic) {
         layer.setBelowLayerID(belowLayerID.asString())
     }
 
     @ReactProp(name = "layerIndex")
-    override override fun setLayerIndex(layer: RNMBXLineLayer, layerIndex: Dynamic) {
+    override fun setLayerIndex(layer: RNMBXLineLayer, layerIndex: Dynamic) {
         layer.setLayerIndex(layerIndex.asInt())
     }
 
     @ReactProp(name = "minZoomLevel")
-    override override fun setMinZoomLevel(layer: RNMBXLineLayer, minZoomLevel: Dynamic) {
+    override fun setMinZoomLevel(layer: RNMBXLineLayer, minZoomLevel: Dynamic) {
         layer.setMinZoomLevel(minZoomLevel.asDouble())
     }
 
     @ReactProp(name = "maxZoomLevel")
-    override override fun setMaxZoomLevel(layer: RNMBXLineLayer, maxZoomLevel: Dynamic) {
+    override fun setMaxZoomLevel(layer: RNMBXLineLayer, maxZoomLevel: Dynamic) {
         layer.setMaxZoomLevel(maxZoomLevel.asDouble())
     }
 
     @ReactProp(name = "reactStyle")
-    override override fun setReactStyle(layer: RNMBXLineLayer, style: Dynamic) {
+    override fun setReactStyle(layer: RNMBXLineLayer, style: Dynamic) {
         layer.setReactStyle(style.asMap())
     }
 
     @ReactProp(name = "sourceLayerID")
-    override override fun setSourceLayerID(layer: RNMBXLineLayer, sourceLayerID: Dynamic) {
+    override fun setSourceLayerID(layer: RNMBXLineLayer, sourceLayerID: Dynamic) {
         layer.setSourceLayerID(sourceLayerID.asString())
     }
 
     @ReactProp(name = "filter")
-    override override fun setFilter(layer: RNMBXLineLayer, filterList: Dynamic) {
+    override fun setFilter(layer: RNMBXLineLayer, filterList: Dynamic) {
         layer.setFilter(filterList.asArray())
     }
 
     @ReactProp(name = "slot")
-    override override fun setSlot(layer: RNMBXLineLayer, slot: Dynamic) {
+    override fun setSlot(layer: RNMBXLineLayer, slot: Dynamic) {
         layer.setSlot(slot.asString())
     }
     // @{codepart-replace-end}

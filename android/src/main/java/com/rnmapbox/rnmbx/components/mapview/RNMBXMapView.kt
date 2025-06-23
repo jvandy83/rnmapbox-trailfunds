@@ -108,7 +108,7 @@ interface RNMBXLifeCycleOwner : LifecycleOwner {
 }
 
 fun interface Cancelable {
-    override fun cancel()
+    fun cancel()
 }
 
 class RNMBXLifeCycle {
@@ -275,7 +275,7 @@ open class RNMBXMapView(private val mContext: Context, var mManager: RNMBXMapVie
         return mapView.getMapboxMap()
     }
 
-    override override fun setId(id: Int) {
+    override fun setId(id: Int) {
         super.setId(id)
         mManager.tagAssigned(id)
     }
@@ -1471,7 +1471,7 @@ open class RNMBXMapView(private val mContext: Context, var mManager: RNMBXMapVie
     }
      */
 
-    override fun onDropViewInstance() {
+    fun onDropViewInstance() {
         removeAllFeaturesFromMap(RemovalReason.ON_DESTROY)
         mapView.viewAnnotationManager.removeAllViewAnnotations()
         lifecycle.onDestroy()

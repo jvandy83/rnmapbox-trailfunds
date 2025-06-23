@@ -86,11 +86,11 @@ class RNMBXCustomLocationProvider(context: Context) : AbstractMapFeature(context
         var customLocationProvider: LocationProvider? = null
         if (customLocationProvider == null) {
             customLocationProvider = object : LocationProvider {
-                override override fun registerLocationConsumer(locationConsumer: LocationConsumer) {
+                override fun registerLocationConsumer(locationConsumer: LocationConsumer) {
                     locationConsumers.add(locationConsumer)
                 }
 
-                override override fun unRegisterLocationConsumer(locationConsumer: LocationConsumer) {
+                override fun unRegisterLocationConsumer(locationConsumer: LocationConsumer) {
                     locationConsumers.remove(locationConsumer)
                 }
             }

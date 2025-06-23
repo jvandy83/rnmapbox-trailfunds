@@ -59,7 +59,7 @@ class RNMBXShapeSource(context: Context, private val mManager: RNMBXShapeSourceM
         return super.removeFromMap(mapView, reason)
     }
 
-    override override fun setId(id: Int) {
+    override fun setId(id: Int) {
         super.setId(id)
         mManager.tagAssigned(id)
     }
@@ -80,7 +80,7 @@ class RNMBXShapeSource(context: Context, private val mManager: RNMBXShapeSourceM
         }
     }
 
-    override fun setShape(geoJSONStr: String) {
+    fun setShape(geoJSONStr: String) {
         mShapeAnimator?.unsubscribe(this)
         mShapeAnimator = null
 
@@ -134,11 +134,11 @@ class RNMBXShapeSource(context: Context, private val mManager: RNMBXShapeSourceM
         }
     }
 
-    override fun setCluster(cluster: Boolean) {
+    fun setCluster(cluster: Boolean) {
         mCluster = cluster
     }
 
-    override fun setClusterRadius(clusterRadius: Long) {
+    fun setClusterRadius(clusterRadius: Long) {
         mClusterRadius = clusterRadius
     }
 
@@ -150,7 +150,7 @@ class RNMBXShapeSource(context: Context, private val mManager: RNMBXShapeSourceM
         }
     }
 
-    override fun setClusterProperties(clusterProperties: HashMap<String, Any>) {
+    fun setClusterProperties(clusterProperties: HashMap<String, Any>) {
         mClusterProperties = clusterProperties
     }
 
@@ -158,15 +158,15 @@ class RNMBXShapeSource(context: Context, private val mManager: RNMBXShapeSourceM
         mMaxZoom = maxZoom
     }
 
-    override fun setBuffer(buffer: Long) {
+    fun setBuffer(buffer: Long) {
         mBuffer = buffer
     }
 
-    override fun setTolerance(tolerance: Double) {
+    fun setTolerance(tolerance: Double) {
         mTolerance = tolerance
     }
 
-    override fun setLineMetrics(lineMetrics: Boolean) {
+    fun setLineMetrics(lineMetrics: Boolean) {
         mLineMetrics = lineMetrics
     }
 

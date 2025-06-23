@@ -9,11 +9,11 @@ import com.facebook.react.viewmanagers.RNMBXMarkerViewContentManagerInterface
 class RNMBXMarkerViewContentManager(reactApplicationContext: ReactApplicationContext) :
     ViewGroupManager<RNMBXMarkerViewContent>(),
     RNMBXMarkerViewContentManagerInterface<RNMBXMarkerView> {
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun createViewInstance(context: ThemedReactContext): RNMBXMarkerViewContent {
+    override fun createViewInstance(context: ThemedReactContext): RNMBXMarkerViewContent {
         return RNMBXMarkerViewContent(context)
     }
 

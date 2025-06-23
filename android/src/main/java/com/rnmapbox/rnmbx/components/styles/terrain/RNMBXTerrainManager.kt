@@ -8,21 +8,21 @@ import com.facebook.react.viewmanagers.RNMBXTerrainManagerInterface
 
 class RNMBXTerrainManager : ViewGroupManager<RNMBXTerrain>(),
     RNMBXTerrainManagerInterface<RNMBXTerrain> {
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXTerrain {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXTerrain {
         return RNMBXTerrain(reactContext)
     }
 
     @ReactProp(name = "sourceID")
-    override override fun setSourceID(layer: RNMBXTerrain, sourceID: Dynamic) {
+    override fun setSourceID(layer: RNMBXTerrain, sourceID: Dynamic) {
         layer.setSourceID(sourceID.asString())
     }
 
     @ReactProp(name = "reactStyle")
-    override override fun setReactStyle(terrain: RNMBXTerrain, reactStyle: Dynamic) {
+    override fun setReactStyle(terrain: RNMBXTerrain, reactStyle: Dynamic) {
         terrain.setReactStyle(reactStyle.asMap())
     }
 

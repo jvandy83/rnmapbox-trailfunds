@@ -84,11 +84,11 @@ abstract class RNMBXSource<T : Source?>(context: Context?) : AbstractMapFeature(
         return mHasPressListener
     }
 
-    override fun setHasPressListener(hasPressListener: Boolean) {
+    fun setHasPressListener(hasPressListener: Boolean) {
         mHasPressListener = hasPressListener
     }
 
-    override fun setHitbox(map: ReadableMap) {
+    fun setHitbox(map: ReadableMap) {
         val hitbox: MutableMap<String, Double> = HashMap()
         hitbox["width"] = map.getDouble("width")
         hitbox["height"] = map.getDouble("height")
@@ -211,11 +211,11 @@ abstract class RNMBXSource<T : Source?>(context: Context?) : AbstractMapFeature(
     val childViews: List<AbstractMapFeature>
         get() = mSubFeatures.map { it.feature }.filterNotNull()
 
-    override override fun getChildAt(childPosition: Int): View {
+    override fun getChildAt(childPosition: Int): View {
         return childViews[childPosition]
     }
 
-    override override fun getChildCount(): Int {
+    override fun getChildCount(): Int {
         return childViews.size;
     }
 

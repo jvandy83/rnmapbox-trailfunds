@@ -37,7 +37,7 @@ class RNMBXCircleLayer(context: Context?) : RNMBXLayer<CircleLayer?>(
 
     }
 
-    override fun setSourceLayerID(sourceLayerID: String?) {
+    fun setSourceLayerID(sourceLayerID: String?) {
         mSourceLayerID = sourceLayerID
         if (mLayer != null) {
             mLayer!!.sourceLayer(sourceLayerID!!)

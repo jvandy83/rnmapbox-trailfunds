@@ -48,7 +48,7 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
     private var mCalloutBitmapId: String? = null
 
     private val childViews = mutableListOf<View>();
-    override override fun addView(childView: View, childPosition: Int) {
+    override fun addView(childView: View, childPosition: Int) {
         if (childView is RNMBXCallout) {
             calloutView = childView
         } else {
@@ -60,20 +60,20 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
         childViews.add(childPosition, childView)
     }
 
-    override override fun getChildAt(childPosition: Int): View {
+    override fun getChildAt(childPosition: Int): View {
         return childViews.get(childPosition)
     }
 
-    override override fun getChildCount(): Int {
+    override fun getChildCount(): Int {
         return childViews.size
     }
 
-    override override fun removeViewAt(index: Int) {
+    override fun removeViewAt(index: Int) {
         val view = childViews.removeAt(index)
         removeView(view)
     }
 
-    override override fun removeView(childView: View) {
+    override fun removeView(childView: View) {
         if (mChildView != null) {
             mMap?.getStyle(object : Style.OnStyleLoaded {
                 override fun onStyleLoaded(style: Style) {
@@ -89,7 +89,7 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
         mMapView?.offscreenAnnotationViewContainer?.removeView(childView)
     }
 
-    override override fun setId(id: Int) {
+    override fun setId(id: Int) {
         super.setId(id)
         mManager.tagAssigned(id)
     }
@@ -159,7 +159,7 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
     val calloutMapboxID: AnnotationID
         get() = mCalloutSymbol?.id ?: INVALID_ANNOTATION_ID
 
-    override fun setCoordinate(point: Point) {
+    fun setCoordinate(point: Point) {
         mCoordinate = point
         annotation?.let {
             it.point = point
@@ -171,7 +171,7 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
         }
     }
 
-    override fun setAnchor(x: Float, y: Float) {
+    fun setAnchor(x: Float, y: Float) {
         mAnchor = arrayOf(x, y)
         annotation?.let { annotation ->
             updateAnchor()
@@ -179,7 +179,7 @@ class RNMBXPointAnnotation(private val mContext: Context, private val mManager: 
         }
     }
 
-    override fun setDraggable(draggable: Boolean) {
+    fun setDraggable(draggable: Boolean) {
         mDraggable = draggable
         annotation?.let { annotation ->
             annotation.isDraggable = draggable

@@ -24,7 +24,7 @@ class RNMBXTerrain(context: Context?) : AbstractSourceConsumer(context) {
     @JvmField
     protected var mReactStyle: ReadableMap? = null
 
-    override fun setReactStyle(reactStyle: ReadableMap?) {
+    fun setReactStyle(reactStyle: ReadableMap?) {
         mReactStyle = reactStyle
         if (mTerrain != null) {
             addStyles()
@@ -32,7 +32,7 @@ class RNMBXTerrain(context: Context?) : AbstractSourceConsumer(context) {
     }
     // endregion RNMBXLayer
 
-    override fun setSourceID(sourceID: String?) {
+    fun setSourceID(sourceID: String?) {
         mSourceID = sourceID
     }
 

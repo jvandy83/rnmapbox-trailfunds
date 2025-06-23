@@ -15,7 +15,7 @@ class RNMBXRasterSource(context: Context?) : RNMBXTileSource<RasterSource?>(cont
             .tileSize(tileSize.toLong()).build()
     }
 
-    override fun setTileSize(tileSize: Int) {
+    fun setTileSize(tileSize: Int) {
         mTileSize = tileSize
     }
 

@@ -39,7 +39,7 @@ class RNMBXFillExtrusionLayer(context: Context?) : RNMBXLayer<FillExtrusionLayer
         }
     }
 
-    override fun setSourceLayerID(sourceLayerID: String?) {
+    fun setSourceLayerID(sourceLayerID: String?) {
         mSourceLayerID = sourceLayerID
         if (mLayer != null) {
             mLayer!!.sourceLayer(mSourceLayerID!!)

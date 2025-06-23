@@ -24,7 +24,7 @@ class RNMBXAtmosphere(context: Context?) : AbstractSourceConsumer(context) {
     @JvmField
     protected var mReactStyle: ReadableMap? = null
 
-    override fun setReactStyle(reactStyle: ReadableMap?) {
+    fun setReactStyle(reactStyle: ReadableMap?) {
         mReactStyle = reactStyle
         if (mAtmosphere != null) {
             addStyles()

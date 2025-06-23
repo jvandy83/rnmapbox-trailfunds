@@ -13,7 +13,7 @@ class RNMBXLogging(private val mReactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(
         mReactContext
     ) {
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 

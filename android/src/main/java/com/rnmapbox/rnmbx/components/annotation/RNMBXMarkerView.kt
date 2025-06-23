@@ -34,27 +34,27 @@ class RNMBXMarkerView(context: Context?, private val mManager: RNMBXMarkerViewMa
     private var mAllowOverlapWithPuck = false
     private var mIsSelected = false
 
-    override fun setCoordinate(point: Point?) {
+    fun setCoordinate(point: Point?) {
         mCoordinate = point
         update()
     }
 
-    override fun setAnchor(x: Float, y: Float) {
+    fun setAnchor(x: Float, y: Float) {
         mAnchor = Vec2(x.toDouble(), y.toDouble())
         update()
     }
 
-    override fun setAllowOverlap(allowOverlap: Boolean) {
+    fun setAllowOverlap(allowOverlap: Boolean) {
         mAllowOverlap = allowOverlap
         update()
     }
 
-    override fun setAllowOverlapWithPuck(allowOverlapWithPuck: Boolean) {
+    fun setAllowOverlapWithPuck(allowOverlapWithPuck: Boolean) {
         mAllowOverlapWithPuck = allowOverlapWithPuck
         update()
     }
 
-    override fun setIsSelected(isSelected: Boolean) {
+    fun setIsSelected(isSelected: Boolean) {
         mIsSelected = isSelected
         update()
     }
@@ -63,7 +63,7 @@ class RNMBXMarkerView(context: Context?, private val mManager: RNMBXMarkerViewMa
 
     // region View methods
 
-    override override fun addView(childView: View, childPosition: Int) {
+    override fun addView(childView: View, childPosition: Int) {
         mView = childView
         // Note: Do not call this method on `super`. The view is added manually.
     }

@@ -18,32 +18,32 @@ class RNMBXViewportManager(private val mContext: ReactApplicationContext, val vi
         mContext
     ), RNMBXViewportManagerInterface<RNMBXViewport> {
 
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXViewport {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXViewport {
         return RNMBXViewport(reactContext, this)
     }
 
     @ReactProp(name = "transitionsToIdleUponUserInteraction")
-    override override fun setTransitionsToIdleUponUserInteraction(view: RNMBXViewport?, value: Dynamic?) {
+    override fun setTransitionsToIdleUponUserInteraction(view: RNMBXViewport?, value: Dynamic?) {
         view?.transitionsToIdleUponUserInteraction = value?.asBoolean()
     }
 
     @ReactProp(name = "hasStatusChanged")
-    override override fun setHasStatusChanged(view: RNMBXViewport?, value: Boolean) {
+    override fun setHasStatusChanged(view: RNMBXViewport?, value: Boolean) {
         view?.hasStatusChanged = value
     }
 
     //region Custom Events
-    override override fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.VIEWPORT_STATUS_CHANGE to "onStatusChanged"
         )
     }
 
-    override override fun getCommandsMap(): Map<String, Int>? {
+    override fun getCommandsMap(): Map<String, Int>? {
         return mapOf(
             "_useCommandName" to 1
         );

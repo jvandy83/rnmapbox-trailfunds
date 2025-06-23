@@ -39,7 +39,7 @@ class RNMBXHeatmapLayer(context: Context?) : RNMBXLayer<HeatmapLayer?>(
         }
     }
 
-    override fun setSourceLayerID(sourceLayerID: String?) {
+    fun setSourceLayerID(sourceLayerID: String?) {
         mSourceLayerID = sourceLayerID
         if (mLayer != null) {
             mLayer!!.sourceLayer(sourceLayerID!!)

@@ -27,7 +27,7 @@ class RNMBXModelLayer(context: Context?) : RNMBXLayer<ModelLayer?>(
         }
     }
 
-    override fun setSourceLayerID(value: String) {
+    fun setSourceLayerID(value: String) {
         mSourceLayerID = value
     }
 }

@@ -24,15 +24,15 @@ class RNMBXPointAnnotationManager(reactApplicationContext: ReactApplicationConte
         mDelegate = RNMBXPointAnnotationManagerDelegate(this)
     }
 
-    override override fun getDelegate(): ViewManagerDelegate<RNMBXPointAnnotation> {
+    override fun getDelegate(): ViewManagerDelegate<RNMBXPointAnnotation> {
         return mDelegate
     }
 
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun customEvents(): Map<String, String> {
+    override fun customEvents(): Map<String, String> {
         return eventMapOf(
             EventKeys.POINT_ANNOTATION_SELECTED to "onMapboxPointAnnotationSelected",
             EventKeys.POINT_ANNOTATION_DESELECTED to "onMapboxPointAnnotationDeselected",
@@ -42,11 +42,11 @@ class RNMBXPointAnnotationManager(reactApplicationContext: ReactApplicationConte
         )
     }
 
-    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXPointAnnotation {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXPointAnnotation {
         return RNMBXPointAnnotation(reactContext, this)
     }
 
-    override override fun onDropViewInstance(view: RNMBXPointAnnotation) {
+    override fun onDropViewInstance(view: RNMBXPointAnnotation) {
         val reactTag = view.id
 
         viewTagResolver.viewRemoved(reactTag)
@@ -58,22 +58,22 @@ class RNMBXPointAnnotationManager(reactApplicationContext: ReactApplicationConte
     }
 
     @ReactProp(name = "id")
-    override override fun setId(annotation: RNMBXPointAnnotation, id: Dynamic) {
+    override fun setId(annotation: RNMBXPointAnnotation, id: Dynamic) {
         annotation.iD = id.asString()
     }
 
     @ReactProp(name = "coordinate")
-    override override fun setCoordinate(annotation: RNMBXPointAnnotation, geoJSONStr: Dynamic) {
+    override fun setCoordinate(annotation: RNMBXPointAnnotation, geoJSONStr: Dynamic) {
         annotation.setCoordinate(toPointGeometry(geoJSONStr.asString())!!)
     }
 
     @ReactProp(name = "anchor")
-    override override fun setAnchor(annotation: RNMBXPointAnnotation, map: Dynamic) {
+    override fun setAnchor(annotation: RNMBXPointAnnotation, map: Dynamic) {
         annotation.setAnchor(map.asMap().getDouble("x").toFloat(), map.asMap().getDouble("y").toFloat())
     }
 
     @ReactProp(name = "draggable")
-    override override fun setDraggable(annotation: RNMBXPointAnnotation, draggable: Dynamic) {
+    override fun setDraggable(annotation: RNMBXPointAnnotation, draggable: Dynamic) {
         annotation.setDraggable(draggable.asBoolean())
     }
 

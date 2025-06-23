@@ -12,16 +12,16 @@ import com.rnmapbox.rnmbx.utils.Logger
 
 class RNMBXCustomLocationProviderManager : ViewGroupManager<RNMBXCustomLocationProvider>(),
     RNMBXCustomLocationProviderManagerInterface<RNMBXCustomLocationProvider> {
-    override override fun getName(): String {
+    override fun getName(): String {
         return  REACT_CLASS
     }
 
-    override override fun createViewInstance(reactContext: ThemedReactContext): RNMBXCustomLocationProvider {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXCustomLocationProvider {
         return RNMBXCustomLocationProvider(reactContext);
     }
 
     @ReactProp(name = "coordinate")
-    override override fun setCoordinate(view: RNMBXCustomLocationProvider, value: Dynamic?) {
+    override fun setCoordinate(view: RNMBXCustomLocationProvider, value: Dynamic?) {
         if (value?.type == ReadableType.Array) {
             val array = value.asArray()
             if (array.size() == 2 && array.getType(0) == ReadableType.Number && array.getType(1) == ReadableType.Number) {
@@ -35,7 +35,7 @@ class RNMBXCustomLocationProviderManager : ViewGroupManager<RNMBXCustomLocationP
     }
 
     @ReactProp(name = "heading")
-    override override fun setHeading(view: RNMBXCustomLocationProvider, value: Dynamic?) {
+    override fun setHeading(view: RNMBXCustomLocationProvider, value: Dynamic?) {
         if (value?.type == ReadableType.Number) {
             view.heading = value.asDouble()
         } else {
@@ -43,7 +43,7 @@ class RNMBXCustomLocationProviderManager : ViewGroupManager<RNMBXCustomLocationP
         }
     }
 
-    override override fun onAfterUpdateTransaction(view: RNMBXCustomLocationProvider) {
+    override fun onAfterUpdateTransaction(view: RNMBXCustomLocationProvider) {
         super.onAfterUpdateTransaction(view)
 
         view.applyAllChanges()

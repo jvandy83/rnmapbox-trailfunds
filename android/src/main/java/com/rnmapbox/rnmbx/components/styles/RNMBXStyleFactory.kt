@@ -4514,7 +4514,7 @@ object RNMBXStyleFactory {
       }
     }
 
-    override fun setAnchor(layer: Light, styleValue: RNMBXStyleValue ) {
+    fun setAnchor(layer: Light, styleValue: RNMBXStyleValue ) {
       if (styleValue.isExpression()) {
         val expression = styleValue.getExpression()
         if (expression != null) {

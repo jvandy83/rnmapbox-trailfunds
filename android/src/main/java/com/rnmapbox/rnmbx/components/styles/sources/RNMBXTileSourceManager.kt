@@ -10,29 +10,29 @@ import com.rnmapbox.rnmbx.components.AbstractEventEmitter
 abstract class RNMBXTileSourceManager<T : RNMBXTileSource<*>> internal constructor(
     reactApplicationContext: ReactApplicationContext
 ) : AbstractEventEmitter<T>(reactApplicationContext) {
-    override override fun getChildAt(source: T, childPosition: Int): View {
+    override fun getChildAt(source: T, childPosition: Int): View {
         return source.getChildAt(childPosition)
     }
 
-    override override fun getChildCount(source: T): Int {
+    override fun getChildCount(source: T): Int {
         return source.childCount
     }
 
-    override override fun addView(source: T, childView: View, childPosition: Int) {
+    override fun addView(source: T, childView: View, childPosition: Int) {
         source.addLayer(childView, childPosition)
     }
 
-    override override fun removeViewAt(source: T, childPosition: Int) {
+    override fun removeViewAt(source: T, childPosition: Int) {
         source.removeLayer(childPosition)
     }
 
     @ReactProp(name = "id")
-    override fun setId(source: T, id: Dynamic) {
+    fun setId(source: T, id: Dynamic) {
         source.iD = id.asString()
     }
 
     @ReactProp(name = "url")
-    override fun setUrl(source: T, url: Dynamic) {
+    fun setUrl(source: T, url: Dynamic) {
         source.uRL = url.asString()
     }
 
@@ -53,12 +53,12 @@ abstract class RNMBXTileSourceManager<T : RNMBXTileSource<*>> internal construct
     }
 
     @ReactProp(name = "minZoomLevel")
-    override fun setMinZoomLevel(source: T, minZoomLevel: Dynamic) {
+    fun setMinZoomLevel(source: T, minZoomLevel: Dynamic) {
         source!!.minZoomLevel = minZoomLevel.asInt()
     }
 
     @ReactProp(name = "maxZoomLevel")
-    override fun setMaxZoomLevel(source: T, maxZoomLevel: Dynamic) {
+    fun setMaxZoomLevel(source: T, maxZoomLevel: Dynamic) {
         source!!.maxZoomLevel = maxZoomLevel.asInt()
     }
 

@@ -21,7 +21,7 @@ class RNMBXRasterLayer(context: Context?) : RNMBXLayer<RasterLayer?>(
         }
     }
 
-    override fun setSourceLayerID(asString: String?) {
+    fun setSourceLayerID(asString: String?) {
         // no-op
     }
 }

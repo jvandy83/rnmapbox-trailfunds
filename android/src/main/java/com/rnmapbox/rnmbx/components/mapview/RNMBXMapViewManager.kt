@@ -60,23 +60,23 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         mDelegate = RNMBXMapViewManagerDelegate<RNMBXMapView, RNMBXMapViewManager>(this)
     }
 
-    override override fun getDelegate(): ViewManagerDelegate<RNMBXMapView>? {
+    override fun getDelegate(): ViewManagerDelegate<RNMBXMapView>? {
         return mDelegate
     }
 
-    override override fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    override override fun createShadowNodeInstance(): LayoutShadowNode {
+    override fun createShadowNodeInstance(): LayoutShadowNode {
         return MapShadowNode(this)
     }
 
-    override override fun getShadowNodeClass(): Class<out LayoutShadowNode> {
+    override fun getShadowNodeClass(): Class<out LayoutShadowNode> {
         return MapShadowNode::class.java
     }
 
-    override override fun onAfterUpdateTransaction(mapView: RNMBXMapView) {
+    override fun onAfterUpdateTransaction(mapView: RNMBXMapView) {
         super.onAfterUpdateTransaction(mapView)
         val first = !mapView.isInitialized
         mapView.applyAllChanges()
@@ -86,19 +86,19 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         }
     }
 
-    override override fun addView(mapView: RNMBXMapView, childView: View, childPosition: Int) {
+    override fun addView(mapView: RNMBXMapView, childView: View, childPosition: Int) {
         mapView.addFeature(childView, childPosition)
     }
 
-    override override fun getChildCount(mapView: RNMBXMapView): Int {
+    override fun getChildCount(mapView: RNMBXMapView): Int {
         return mapView.featureCount
     }
 
-    override override fun getChildAt(mapView: RNMBXMapView, index: Int): View? {
+    override fun getChildAt(mapView: RNMBXMapView, index: Int): View? {
         return mapView.getFeatureAt(index)
     }
 
-    override override fun removeViewAt(mapView: RNMBXMapView, index: Int) {
+    override fun removeViewAt(mapView: RNMBXMapView, index: Int) {
         mapView.removeFeatureAt(index)
     }
 
@@ -106,12 +106,12 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         return activity ?: themedReactContext
     }
 
-    override override fun createViewInstance(themedReactContext: ThemedReactContext): RNMBXMapView {
+    override fun createViewInstance(themedReactContext: ThemedReactContext): RNMBXMapView {
         val context = getMapViewContext(themedReactContext)
         return RNMBXMapView(context, this, options=null)
     }
 
-    override override fun onDropViewInstance(mapView: RNMBXMapView) {
+    override fun onDropViewInstance(mapView: RNMBXMapView) {
         val reactTag = mapView.id
 
         viewTagResolver.viewRemoved(reactTag)
@@ -133,19 +133,19 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
 
     // region React Props
     @ReactProp(name = "projection")
-    override override fun setProjection(mapView: RNMBXMapView, projection: Dynamic) {
+    override fun setProjection(mapView: RNMBXMapView, projection: Dynamic) {
         mapView.setReactProjection( if (projection.asString() == "globe") ProjectionName.GLOBE else ProjectionName.MERCATOR )
     }
 
     @ReactProp(name = "localizeLabels")
-    override override fun setLocalizeLabels(mapView: RNMBXMapView, localeMap: Dynamic) {
+    override fun setLocalizeLabels(mapView: RNMBXMapView, localeMap: Dynamic) {
         val locale = localeMap.asMap().getString("locale")
         val layerIds = localeMap.asMap().getArray("layerIds")?.toArrayList()?.mapNotNull {it.toString()}
         mapView.setReactLocalizeLabels(locale, layerIds)
     }
 
     @ReactProp(name = "surfaceView")
-    override override fun setSurfaceView(mapView: RNMBXMapView, value: Dynamic) {
+    override fun setSurfaceView(mapView: RNMBXMapView, value: Dynamic) {
         if (mapView.isInitialized) {
             if (mapView.surfaceView != value.asBoolean()) {
                 Logger.d(LOG_TAG, "surafaceView cannot be changed on existing map")
@@ -156,7 +156,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
     }
 
     @ReactProp(name = "gestureSettings")
-    override override fun setGestureSettings(mapView: RNMBXMapView, settings: Dynamic) {
+    override fun setGestureSettings(mapView: RNMBXMapView, settings: Dynamic) {
         mapView.withMap {
            it.gesturesPlugin {
                val map = settings.asMap()
@@ -206,7 +206,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
     }
 
     @ReactProp(name = "styleURL")
-    override override fun setStyleURL(mapView: RNMBXMapView, styleURL:Dynamic) {
+    override fun setStyleURL(mapView: RNMBXMapView, styleURL:Dynamic) {
         mapView.setReactStyleURL(styleURL.asString())
     }
 
@@ -216,7 +216,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
     }
 
     @ReactProp(name = "zoomEnabled")
-    override override fun setZoomEnabled(map: RNMBXMapView, zoomEnabled: Dynamic) {
+    override fun setZoomEnabled(map: RNMBXMapView, zoomEnabled: Dynamic) {
         map.withMapView {
             it.gestures.pinchToZoomEnabled = zoomEnabled.asBoolean()
             it.gestures.doubleTouchToZoomOutEnabled = zoomEnabled.asBoolean()
@@ -225,93 +225,93 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
     }
 
     @ReactProp(name = "scrollEnabled")
-    override override fun setScrollEnabled(map: RNMBXMapView, scrollEnabled: Dynamic) {
+    override fun setScrollEnabled(map: RNMBXMapView, scrollEnabled: Dynamic) {
         map.withMapView {
             it.gestures.scrollEnabled = scrollEnabled.asBoolean()
         }
     }
 
     @ReactProp(name = "pitchEnabled")
-    override override fun setPitchEnabled(map: RNMBXMapView, pitchEnabled: Dynamic) {
+    override fun setPitchEnabled(map: RNMBXMapView, pitchEnabled: Dynamic) {
         map.withMapView {
             it.gestures.pitchEnabled = pitchEnabled.asBoolean()
         }
     }
 
     @ReactProp(name = "rotateEnabled")
-    override override fun setRotateEnabled(map: RNMBXMapView, rotateEnabled: Dynamic) {
+    override fun setRotateEnabled(map: RNMBXMapView, rotateEnabled: Dynamic) {
         map.withMapView {
            it.gestures.rotateEnabled = rotateEnabled.asBoolean()
         }
     }
 
     @ReactProp(name = "attributionEnabled")
-    override override fun setAttributionEnabled(mapView: RNMBXMapView, attributionEnabled: Dynamic) {
+    override fun setAttributionEnabled(mapView: RNMBXMapView, attributionEnabled: Dynamic) {
         mapView.setReactAttributionEnabled(attributionEnabled.asBoolean())
     }
 
     @ReactProp(name = "attributionPosition")
-    override override fun setAttributionPosition(mapView: RNMBXMapView, attributionPosition: Dynamic) {
+    override fun setAttributionPosition(mapView: RNMBXMapView, attributionPosition: Dynamic) {
         mapView.setReactAttributionPosition(attributionPosition.asMap())
     }
 
     @ReactProp(name = "attributionViewMargins")
-    override override fun setAttributionViewMargins(mapView: RNMBXMapView, scaleBarMargins: Dynamic) {
+    override fun setAttributionViewMargins(mapView: RNMBXMapView, scaleBarMargins: Dynamic) {
         mapView.setReactAttributionViewMargins(scaleBarMargins.asMap())
     }
 
     @ReactProp(name = "attributionViewPosition")
-    override override fun setAttributionViewPosition(mapView: RNMBXMapView, attributionViewPosition: Dynamic) {
+    override fun setAttributionViewPosition(mapView: RNMBXMapView, attributionViewPosition: Dynamic) {
         mapView.setReactAttributionViewPosition(attributionViewPosition.asInt())
     }
 
     @ReactProp(name = "logoEnabled")
-    override override fun setLogoEnabled(mapView: RNMBXMapView, logoEnabled: Dynamic) {
+    override fun setLogoEnabled(mapView: RNMBXMapView, logoEnabled: Dynamic) {
         mapView.setReactLogoEnabled(logoEnabled.asBoolean())
     }
 
     @ReactProp(name = "logoPosition")
-    override override fun setLogoPosition(mapView: RNMBXMapView, logoPosition: Dynamic) {
+    override fun setLogoPosition(mapView: RNMBXMapView, logoPosition: Dynamic) {
         mapView.setReactLogoPosition(logoPosition.asMap())
     }
 
     @ReactProp(name = "scaleBarEnabled")
-    override override fun setScaleBarEnabled(mapView: RNMBXMapView, scaleBarEnabled: Dynamic) {
+    override fun setScaleBarEnabled(mapView: RNMBXMapView, scaleBarEnabled: Dynamic) {
         mapView.setReactScaleBarEnabled(scaleBarEnabled.asBoolean())
     }
 
     @ReactProp(name = "scaleBarViewMargins")
-    override override fun setScaleBarViewMargins(mapView: RNMBXMapView, scaleBarMargins: Dynamic) {
+    override fun setScaleBarViewMargins(mapView: RNMBXMapView, scaleBarMargins: Dynamic) {
         mapView.setReactScaleBarViewMargins(scaleBarMargins.asMap())
     }
 
     @ReactProp(name = "scaleBarPosition")
-    override override fun setScaleBarPosition(mapView: RNMBXMapView, scaleBarPosition: Dynamic) {
+    override fun setScaleBarPosition(mapView: RNMBXMapView, scaleBarPosition: Dynamic) {
         mapView.setReactScaleBarPosition(scaleBarPosition.asMap())
     }
 
     @ReactProp(name = "compassEnabled")
-    override override fun setCompassEnabled(mapView: RNMBXMapView, compassEnabled: Dynamic) {
+    override fun setCompassEnabled(mapView: RNMBXMapView, compassEnabled: Dynamic) {
         mapView.setReactCompassEnabled(compassEnabled.asBoolean())
     }
 
     @ReactProp(name = "compassFadeWhenNorth")
-    override override fun setCompassFadeWhenNorth(mapView: RNMBXMapView, compassFadeWhenNorth: Dynamic) {
+    override fun setCompassFadeWhenNorth(mapView: RNMBXMapView, compassFadeWhenNorth: Dynamic) {
         mapView.setReactCompassFadeWhenNorth(compassFadeWhenNorth.asBoolean())
     }
 
     @ReactProp(name = "compassViewMargins")
-    override override fun setCompassViewMargins(mapView: RNMBXMapView, compassViewMargins: Dynamic) {
+    override fun setCompassViewMargins(mapView: RNMBXMapView, compassViewMargins: Dynamic) {
         mapView.setReactCompassViewMargins(compassViewMargins.asMap())
     }
 
     @ReactProp(name = "compassViewPosition")
-    override override fun setCompassViewPosition(mapView: RNMBXMapView, compassViewPosition: Dynamic) {
+    override fun setCompassViewPosition(mapView: RNMBXMapView, compassViewPosition: Dynamic) {
         mapView.setReactCompassViewPosition(compassViewPosition.asInt())
     }
 
     @ReactProp(name = "compassPosition")
-    override override fun setCompassPosition(mapView: RNMBXMapView, compassMargins: Dynamic) {
+    override fun setCompassPosition(mapView: RNMBXMapView, compassMargins: Dynamic) {
         mapView.setReactCompassPosition(compassMargins.asMap())
     }
 
@@ -328,31 +328,31 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
     }
 
     @ReactProp(name = "requestDisallowInterceptTouchEvent")
-    override override fun setRequestDisallowInterceptTouchEvent(mapView: RNMBXMapView, requestDisallowInterceptTouchEvent: Dynamic) {
+    override fun setRequestDisallowInterceptTouchEvent(mapView: RNMBXMapView, requestDisallowInterceptTouchEvent: Dynamic) {
         mapView.requestDisallowInterceptTouchEvent = requestDisallowInterceptTouchEvent.asBoolean()
     }
 
     @ReactProp(name = "deselectAnnotationOnTap")
-    override override fun setDeselectAnnotationOnTap(mapView: RNMBXMapView, value: Dynamic?) {
+    override fun setDeselectAnnotationOnTap(mapView: RNMBXMapView, value: Dynamic?) {
         value?.let {
             mapView.deselectAnnotationOnTap = it.asBoolean()
         }
     }
 
     @ReactProp(name = "mapViewImpl")
-    override override fun setMapViewImpl(mapView: RNMBXMapView, value: Dynamic?) {
+    override fun setMapViewImpl(mapView: RNMBXMapView, value: Dynamic?) {
         value?.let {
             mapView.mapViewImpl = it.asString()
         }
     }
 
-    override override fun setCompassImage(view: RNMBXMapView, value: Dynamic?) {
+    override fun setCompassImage(view: RNMBXMapView, value: Dynamic?) {
         // TODO: No-op on Android?
     }
 
     //endregion
     //region Custom Events
-    override override fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.MAP_CLICK to "onPress",
             EventKeys.MAP_LONG_CLICK to "onLongPress",
@@ -363,7 +363,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         )
     }
 
-    override override fun getCommandsMap(): Map<String, Int>? {
+    override fun getCommandsMap(): Map<String, Int>? {
         return mapOf(
             "_useCommandName" to 1
         );
@@ -372,7 +372,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
 
     private class MapShadowNode(private val mViewManager: RNMBXMapViewManager) :
         LayoutShadowNode() {
-        override override fun dispose() {
+        override fun dispose() {
             super.dispose()
             diposeNativeMapView()
         }

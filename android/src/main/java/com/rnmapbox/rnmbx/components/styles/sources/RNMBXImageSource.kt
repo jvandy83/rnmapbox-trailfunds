@@ -52,7 +52,7 @@ class RNMBXImageSource(context: Context?) : RNMBXSource<ImageSource?>(context) {
         }
     }
 
-    override fun setCoordinates(coordQuad: LatLngQuad?) {
+    fun setCoordinates(coordQuad: LatLngQuad?) {
         mCoordQuad = coordQuad
         try {
             if (mSource != null) {
