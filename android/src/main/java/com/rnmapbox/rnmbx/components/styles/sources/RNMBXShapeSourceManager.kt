@@ -50,7 +50,7 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
         source.removeLayer(childPosition)
     }
 
-    fun onDropViewInstance(view: RNMBXShapeSource) {
+    override fun onDropViewInstance(view: RNMBXShapeSource) {
         val reactTag = view.id
 
         viewTagResolver.viewRemoved(reactTag)
@@ -62,7 +62,7 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "id")
-    fun setId(source: RNMBXShapeSource, id: Dynamic) {
+    override fun setId(source: RNMBXShapeSource, id: Dynamic) {
         source.iD = id.asString()
     }
 
@@ -72,7 +72,7 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "url")
-    fun setUrl(source: RNMBXShapeSource, urlStr: Dynamic) {
+    override fun setUrl(source: RNMBXShapeSource, urlStr: Dynamic) {
         try {
             source.setURL(URL(urlStr.asString()))
         } catch (e: MalformedURLException) {
@@ -81,27 +81,27 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "shape")
-    fun setShape(source: RNMBXShapeSource, geoJSONStr: Dynamic) {
+    override fun setShape(source: RNMBXShapeSource, geoJSONStr: Dynamic) {
         source.setShape(geoJSONStr.asString())
     }
 
     @ReactProp(name = "cluster")
-    fun setCluster(source: RNMBXShapeSource, cluster: Dynamic) {
+    override fun setCluster(source: RNMBXShapeSource, cluster: Dynamic) {
         source.setCluster(cluster.asInt() == 1)
     }
 
     @ReactProp(name = "clusterRadius")
-    fun setClusterRadius(source: RNMBXShapeSource, radius: Dynamic) {
+    override fun setClusterRadius(source: RNMBXShapeSource, radius: Dynamic) {
         source.setClusterRadius(radius.asInt().toLong())
     }
 
     @ReactProp(name = "clusterMaxZoomLevel")
-    fun setClusterMaxZoomLevel(source: RNMBXShapeSource, clusterMaxZoom: Dynamic) {
+    override fun setClusterMaxZoomLevel(source: RNMBXShapeSource, clusterMaxZoom: Dynamic) {
         source.setClusterMaxZoom(clusterMaxZoom.asInt().toLong())
     }
 
     @ReactProp(name = "clusterProperties")
-    fun setClusterProperties(source: RNMBXShapeSource, map: Dynamic) {
+    override fun setClusterProperties(source: RNMBXShapeSource, map: Dynamic) {
         val properties = HashMap<String, Any>()
         val iterator = map.asMap().keySetIterator()
         while (iterator.hasNextKey()) {
@@ -129,36 +129,36 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "maxZoomLevel")
-    fun setMaxZoomLevel(source: RNMBXShapeSource, maxZoom: Dynamic) {
+    override fun setMaxZoomLevel(source: RNMBXShapeSource, maxZoom: Dynamic) {
         source.setMaxZoom(maxZoom.asInt().toLong())
     }
 
     @ReactProp(name = "buffer")
-    fun setBuffer(source: RNMBXShapeSource, buffer: Dynamic) {
+    override fun setBuffer(source: RNMBXShapeSource, buffer: Dynamic) {
         source.setBuffer(buffer.asInt().toLong())
     }
 
     @ReactProp(name = "tolerance")
-    fun setTolerance(source: RNMBXShapeSource, tolerance: Dynamic) {
+    override fun setTolerance(source: RNMBXShapeSource, tolerance: Dynamic) {
         source.setTolerance(tolerance.asDouble())
     }
 
     @ReactProp(name = "lineMetrics")
-    fun setLineMetrics(source: RNMBXShapeSource, lineMetrics: Dynamic) {
+    override fun setLineMetrics(source: RNMBXShapeSource, lineMetrics: Dynamic) {
         source.setLineMetrics(lineMetrics.asBoolean())
     }
 
     @ReactProp(name = "hasPressListener")
-    fun setHasPressListener(source: RNMBXShapeSource, hasPressListener: Dynamic) {
+    override fun setHasPressListener(source: RNMBXShapeSource, hasPressListener: Dynamic) {
         source.setHasPressListener(hasPressListener.asBoolean())
     }
 
     @ReactProp(name = "hitbox")
-    fun setHitbox(source: RNMBXShapeSource, map: Dynamic) {
+    override fun setHitbox(source: RNMBXShapeSource, map: Dynamic) {
         source.setHitbox(map.asMap())
     }
 
-    fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.SHAPE_SOURCE_LAYER_CLICK to "onMapboxShapeSourcePress",
             EventKeys.MAP_ANDROID_CALLBACK to "onAndroidCallback"
