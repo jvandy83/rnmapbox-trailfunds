@@ -30,7 +30,7 @@ class RNMBXAtmosphereManager : ViewGroupManager<RNMBXAtmosphere>(),
     }
 
     @ReactProp(name = "reactStyle")
-    fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
+    override fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
         atmosphere.setReactStyle(reactStyle.asMap())
     }
 

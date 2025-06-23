@@ -56,7 +56,7 @@ internal class LocationProviderForEngine(var mEngine: LocationEngine?, val conte
     }
     fun afterRemovedLastConsumer() {}
     @SuppressLint("MissingPermission")
-    fun registerLocationConsumer(locationConsumer: LocationConsumer) {
+    override fun registerLocationConsumer(locationConsumer: LocationConsumer) {
         if (mConsumers.isEmpty()) {
             beforeAddingFirstConsumer()
         }
@@ -64,7 +64,7 @@ internal class LocationProviderForEngine(var mEngine: LocationEngine?, val conte
         mEngine?.getLastLocation(this)
     }
 
-    fun unRegisterLocationConsumer(locationConsumer: LocationConsumer) {
+    override fun unRegisterLocationConsumer(locationConsumer: LocationConsumer) {
         mConsumers.remove(locationConsumer)
         if (mConsumers.isEmpty()) {
             afterRemovedLastConsumer()
@@ -82,12 +82,12 @@ internal class LocationProviderForEngine(var mEngine: LocationEngine?, val conte
     }
 
     // * LocationEngineCallback
-    fun onSuccess(locationEngineResult: LocationEngineResult) {
+    override fun onSuccess(locationEngineResult: LocationEngineResult) {
         val location = locationEngineResult?.lastLocation
         location?.let { notifyLocationUpdates(it) }
     }
 
-    fun onFailure(e: Exception) {}
+    override fun onFailure(e: Exception) {}
 }
 
 class LocationManager private constructor(private val context: Context) : LocationEngineCallback {
