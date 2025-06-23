@@ -78,7 +78,7 @@ class RNMBXMarkerViewManager(reactApplicationContext: ReactApplicationContext) :
             // see https://github.com/rnmapbox/maps/issues/2376
             viewAnnotationManager.addOnViewAnnotationUpdatedListener(object :
                 OnViewAnnotationUpdatedListener() {
-                fun onViewAnnotationVisibilityUpdated(view: View, visible: Boolean) {
+                override fun onViewAnnotationVisibilityUpdated(view: View, visible: Boolean) {
                     val parent = view.parent
                     if (parent is FrameLayout) {
                         if ((parent.width == 0 && parent.height == 0) && (mapView.width != 0 || mapView.height != 0)) {
@@ -86,8 +86,6 @@ class RNMBXMarkerViewManager(reactApplicationContext: ReactApplicationContext) :
                         }
                     }
                 }
-
-
             })
         }
     }

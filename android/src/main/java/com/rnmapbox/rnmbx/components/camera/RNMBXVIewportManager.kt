@@ -43,7 +43,7 @@ class RNMBXViewportManager(private val mContext: ReactApplicationContext, val vi
         )
     }
 
-    fun getCommandsMap(): Map<String, Int>? {
+    override fun getCommandsMap(): Map<String, Int>? {
         return mapOf(
             "_useCommandName" to 1
         );
