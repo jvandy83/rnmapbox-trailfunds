@@ -43,7 +43,7 @@ class RNMBXCustomLocationProviderManager : ViewGroupManager<RNMBXCustomLocationP
         }
     }
 
-    fun onAfterUpdateTransaction(view: RNMBXCustomLocationProvider) {
+    override fun onAfterUpdateTransaction(view: RNMBXCustomLocationProvider) {
         super.onAfterUpdateTransaction(view)
 
         view.applyAllChanges()

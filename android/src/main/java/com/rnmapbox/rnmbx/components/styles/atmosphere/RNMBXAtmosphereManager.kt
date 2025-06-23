@@ -8,7 +8,8 @@ import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.viewmanagers.RNMBXAtmosphereManagerDelegate
 import com.facebook.react.viewmanagers.RNMBXAtmosphereManagerInterface
 
-class RNMBXAtmosphereManager : ViewGroupManager<RNMBXAtmosphere>() {
+class RNMBXAtmosphereManager : ViewGroupManager<RNMBXAtmosphere>(),
+    RNMBXAtmosphereManagerInterface<RNMBXAtmosphere> {
 
     private val mDelegate: ViewManagerDelegate<RNMBXAtmosphere>
 
@@ -29,7 +30,7 @@ class RNMBXAtmosphereManager : ViewGroupManager<RNMBXAtmosphere>() {
     }
 
     @ReactProp(name = "reactStyle")
-    override fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
+    fun setReactStyle(atmosphere: RNMBXAtmosphere, reactStyle: Dynamic) {
         atmosphere.setReactStyle(reactStyle.asMap())
     }
 

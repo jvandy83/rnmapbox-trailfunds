@@ -68,15 +68,15 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         return REACT_CLASS
     }
 
-    fun createShadowNodeInstance(): LayoutShadowNode {
+    override fun createShadowNodeInstance(): LayoutShadowNode {
         return MapShadowNode(this)
     }
 
-    fun getShadowNodeClass(): Class<out LayoutShadowNode> {
+    override fun getShadowNodeClass(): Class<out LayoutShadowNode> {
         return MapShadowNode::class.java
     }
 
-    fun onAfterUpdateTransaction(mapView: RNMBXMapView) {
+    override fun onAfterUpdateTransaction(mapView: RNMBXMapView) {
         super.onAfterUpdateTransaction(mapView)
         val first = !mapView.isInitialized
         mapView.applyAllChanges()
@@ -86,19 +86,19 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         }
     }
 
-    fun addView(mapView: RNMBXMapView, childView: View, childPosition: Int) {
+    override fun addView(mapView: RNMBXMapView, childView: View, childPosition: Int) {
         mapView.addFeature(childView, childPosition)
     }
 
-    fun getChildCount(mapView: RNMBXMapView): Int {
+    override fun getChildCount(mapView: RNMBXMapView): Int {
         return mapView.featureCount
     }
 
-    fun getChildAt(mapView: RNMBXMapView, index: Int): View? {
+    override fun getChildAt(mapView: RNMBXMapView, index: Int): View? {
         return mapView.getFeatureAt(index)
     }
 
-    fun removeViewAt(mapView: RNMBXMapView, index: Int) {
+    override fun removeViewAt(mapView: RNMBXMapView, index: Int) {
         mapView.removeFeatureAt(index)
     }
 
@@ -363,7 +363,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
         )
     }
 
-    fun getCommandsMap(): Map<String, Int>? {
+    override fun getCommandsMap(): Map<String, Int>? {
         return mapOf(
             "_useCommandName" to 1
         );
@@ -372,7 +372,7 @@ open class RNMBXMapViewManager(context: ReactApplicationContext, val viewTagReso
 
     private class MapShadowNode(private val mViewManager: RNMBXMapViewManager) :
         LayoutShadowNode() {
-        fun dispose() {
+        override fun dispose() {
             super.dispose()
             diposeNativeMapView()
         }

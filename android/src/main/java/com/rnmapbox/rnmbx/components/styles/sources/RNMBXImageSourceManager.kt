@@ -18,19 +18,19 @@ class RNMBXImageSourceManager : ViewGroupManager<RNMBXImageSource>(),
         return RNMBXImageSource(reactContext)
     }
 
-    fun getChildAt(source: RNMBXImageSource, childPosition: Int): View {
+    override fun getChildAt(source: RNMBXImageSource, childPosition: Int): View {
         return source.getChildAt(childPosition)
     }
 
-    fun getChildCount(source: RNMBXImageSource): Int {
+    override fun getChildCount(source: RNMBXImageSource): Int {
         return source.childCount
     }
 
-    fun addView(source: RNMBXImageSource, childView: View, childPosition: Int) {
+    override fun addView(source: RNMBXImageSource, childView: View, childPosition: Int) {
         source.addLayer(childView, childPosition)
     }
 
-    fun removeViewAt(source: RNMBXImageSource, childPosition: Int) {
+    override fun removeViewAt(source: RNMBXImageSource, childPosition: Int) {
         source.removeLayer(childPosition)
     }
 

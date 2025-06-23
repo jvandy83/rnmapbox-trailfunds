@@ -34,19 +34,19 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
         return RNMBXShapeSource(reactContext, this)
     }
 
-    fun getChildAt(source: RNMBXShapeSource, childPosition: Int): View {
+    override fun getChildAt(source: RNMBXShapeSource, childPosition: Int): View {
         return source.getChildAt(childPosition)
     }
 
-    fun getChildCount(source: RNMBXShapeSource): Int {
+    override fun getChildCount(source: RNMBXShapeSource): Int {
         return source.childCount
     }
 
-    fun addView(source: RNMBXShapeSource, childView: View, childPosition: Int) {
+    override fun addView(source: RNMBXShapeSource, childView: View, childPosition: Int) {
         source.addLayer(childView, getChildCount(source))
     }
 
-    fun removeViewAt(source: RNMBXShapeSource, childPosition: Int) {
+    override fun removeViewAt(source: RNMBXShapeSource, childPosition: Int) {
         source.removeLayer(childPosition)
     }
 
@@ -67,7 +67,7 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     }
 
     @ReactProp(name = "existing")
-    fun setExisting(source: RNMBXShapeSource, existing: Dynamic) {
+    override fun setExisting(source: RNMBXShapeSource, existing: Dynamic) {
         source.mExisting = existing.asBoolean()
     }
 
