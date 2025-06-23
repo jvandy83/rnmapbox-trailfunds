@@ -14,31 +14,31 @@ class RNMBXVectorSourceManager(reactApplicationContext: ReactApplicationContext)
     RNMBXTileSourceManager<RNMBXVectorSource>(reactApplicationContext),
     RNMBXVectorSourceManagerInterface<RNMBXVectorSource> {
     @Nonnull
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
     @Nonnull
-    fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXVectorSource {
+    override fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXVectorSource {
         return RNMBXVectorSource(reactContext, this)
     }
 
     @ReactProp(name = "hasPressListener")
-    fun setHasPressListener(source: RNMBXVectorSource, hasPressListener: Dynamic) {
+    override fun setHasPressListener(source: RNMBXVectorSource, hasPressListener: Dynamic) {
         source.setHasPressListener(hasPressListener.asBoolean())
     }
 
     @ReactProp(name = "hitbox")
-    fun setHitbox(source: RNMBXVectorSource, map: Dynamic) {
+    override fun setHitbox(source: RNMBXVectorSource, map: Dynamic) {
         source.setHitbox(map.asMap())
     }
 
     @ReactProp(name = "existing")
-    fun setExisting(view: RNMBXVectorSource, value: Dynamic) {
+    override fun setExisting(view: RNMBXVectorSource, value: Dynamic) {
         view.mExisting = value.asBoolean()
     }
 
-    fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.VECTOR_SOURCE_LAYER_CLICK to "onMapboxVectorSourcePress",
             EventKeys.MAP_ANDROID_CALLBACK to "onAndroidCallback"

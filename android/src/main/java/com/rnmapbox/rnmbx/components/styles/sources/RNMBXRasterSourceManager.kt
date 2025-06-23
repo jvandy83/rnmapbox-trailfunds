@@ -13,21 +13,21 @@ class RNMBXRasterSourceManager(reactApplicationContext: ReactApplicationContext)
     RNMBXTileSourceManager<RNMBXRasterSource>(reactApplicationContext),
     RNMBXRasterSourceManagerInterface<RNMBXRasterSource> {
     @Nonnull
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
     @Nonnull
-    fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXRasterSource {
+    override fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXRasterSource {
         return RNMBXRasterSource(reactContext)
     }
 
     @ReactProp(name = "tileSize")
-    fun setTileSize(source: RNMBXRasterSource, tileSize: Dynamic) {
+    override fun setTileSize(source: RNMBXRasterSource, tileSize: Dynamic) {
         source.setTileSize(tileSize.asInt())
     }
 
-    fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return eventMapOf(
             EventKeys.RASTER_SOURCE_LAYER_CLICK to "onMapboxRasterSourcePress",
             EventKeys.MAP_ANDROID_CALLBACK to "onAndroidCallback"
@@ -39,7 +39,7 @@ class RNMBXRasterSourceManager(reactApplicationContext: ReactApplicationContext)
     }
 
     @ReactProp(name = "existing")
-    fun setExisting(source: RNMBXRasterSource, value: Dynamic) {
+    override fun setExisting(source: RNMBXRasterSource, value: Dynamic) {
         source.mExisting = value.asBoolean()
     }
 }

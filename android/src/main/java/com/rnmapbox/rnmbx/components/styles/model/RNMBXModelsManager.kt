@@ -14,16 +14,16 @@ import com.rnmapbox.rnmbx.utils.extensions.forEach
 
 class RNMBXModelsManager(private val mContext: ReactApplicationContext) : ViewGroupManager<RNMBXModels>(),
     RNMBXModelsManagerInterface<RNMBXModels> {
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    fun createViewInstance(context: ThemedReactContext): RNMBXModels {
+    override fun createViewInstance(context: ThemedReactContext): RNMBXModels {
         return RNMBXModels(context)
     }
 
     @ReactProp(name = "models")
-    fun setModels(view: RNMBXModels, value: Dynamic?) {
+    override fun setModels(view: RNMBXModels, value: Dynamic?) {
         val map = hashMapOf<String,String>()
         value?.asMap()?.forEach { modelName, model ->
             when (model) {

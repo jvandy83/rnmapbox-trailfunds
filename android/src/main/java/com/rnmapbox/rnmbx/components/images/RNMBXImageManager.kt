@@ -13,19 +13,19 @@ import com.rnmapbox.rnmbx.utils.ViewTagResolver
 class RNMBXImageManager(private val mContext: ReactApplicationContext, val viewTagResolver: ViewTagResolver) : AbstractEventEmitter<RNMBXImage>(
 mContext
 ), RNMBXImageManagerInterface<RNMBXImage> {
-    fun getName(): String {
+    override fun getName(): String {
         return "RNMBXImage"
     }
 
-    fun createViewInstance(p0: ThemedReactContext): RNMBXImage {
+    override fun createViewInstance(p0: ThemedReactContext): RNMBXImage {
         return RNMBXImage(mContext, this)
     }
 
-    fun customEvents(): MutableMap<String, String>? {
+    override fun customEvents(): MutableMap<String, String>? {
         return mutableMapOf();
     }
 
-    fun onDropViewInstance(view: RNMBXImage) {
+    override fun onDropViewInstance(view: RNMBXImage) {
         val reactTag = view.id
 
         viewTagResolver.viewRemoved(reactTag)
@@ -38,32 +38,32 @@ mContext
 
     // region React properties
     @ReactProp(name="name")
-    fun setName(image: RNMBXImage, value: Dynamic) {
+    override fun setName(image: RNMBXImage, value: Dynamic) {
         image.name = value.asString()
     }
 
     @ReactProp(name="sdf")
-    fun setSdf(image: RNMBXImage, value: Dynamic) {
+    override fun setSdf(image: RNMBXImage, value: Dynamic) {
         image.sdf = value.asBoolean()
     }
 
     @ReactProp(name="stretchX")
-    fun setStretchX(image: RNMBXImage, value: Dynamic) {
+    override fun setStretchX(image: RNMBXImage, value: Dynamic) {
         image.stretchX = RNMBXImagesManager.convertStretch(value) ?: listOf()
     }
 
     @ReactProp(name="stretchY")
-    fun setStretchY(image: RNMBXImage, value: Dynamic) {
+    override fun setStretchY(image: RNMBXImage, value: Dynamic) {
         image.stretchY = RNMBXImagesManager.convertStretch(value) ?: listOf()
     }
 
     @ReactProp(name="content")
-    fun setContent(image: RNMBXImage, value: Dynamic) {
+    override fun setContent(image: RNMBXImage, value: Dynamic) {
         image.content = RNMBXImagesManager.convertContent(value)
     }
 
     @ReactProp(name="scale")
-    fun setScale(image: RNMBXImage, value: Dynamic) {
+    override fun setScale(image: RNMBXImage, value: Dynamic) {
         image.scale = value.asDouble()
     }
     // endregion

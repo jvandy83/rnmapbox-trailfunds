@@ -14,16 +14,16 @@ class RNMBXRasterDemSourceManager(private val mContext: ReactApplicationContext)
     RNMBXTileSourceManager<RNMBXRasterDemSource>(
         mContext
     ), RNMBXRasterDemSourceManagerInterface<RNMBXRasterDemSource> {
-    fun customEvents(): Map<String, String>? {
+    override fun customEvents(): Map<String, String>? {
         return MapBuilder.builder<String, String>()
             .build()
     }
 
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    fun createViewInstance(reactContext: ThemedReactContext): RNMBXRasterDemSource {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXRasterDemSource {
         return RNMBXRasterDemSource(reactContext, this)
     }
 
@@ -33,12 +33,12 @@ class RNMBXRasterDemSourceManager(private val mContext: ReactApplicationContext)
     }
 
     @ReactProp(name = "existing")
-    fun setExisting(view: RNMBXRasterDemSource, value: Dynamic) {
+    override fun setExisting(view: RNMBXRasterDemSource, value: Dynamic) {
         view.mExisting = value.asBoolean()
     }
 
     @ReactProp(name = "tileSize")
-    fun setTileSize(view: RNMBXRasterDemSource, value: Dynamic) {
+    override fun setTileSize(view: RNMBXRasterDemSource, value: Dynamic) {
         view.setTileSize(value.asInt())
     }
 }

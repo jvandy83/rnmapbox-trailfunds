@@ -27,11 +27,11 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     AbstractEventEmitter<RNMBXImages>(
         mContext
     ), RNMBXImagesManagerInterface<RNMBXImages> {
-    fun getName(): String {
+    override fun getName(): String {
         return "RNMBXImages"
     }
 
-    public fun createViewInstance(context: ThemedReactContext): RNMBXImages {
+    public override fun createViewInstance(context: ThemedReactContext): RNMBXImages {
         return RNMBXImages(context, this)
     }
 
@@ -73,7 +73,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "images")
-    fun setImages(images: RNMBXImages, map: Dynamic) {
+    override fun setImages(images: RNMBXImages, map: Dynamic) {
         val imagesList = mutableListOf<Map.Entry<String, ImageEntry>>()
         map.asMap().forEach { imageName, imageInfo ->
             when (imageInfo) {
@@ -134,7 +134,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "hasOnImageMissing")
-    fun setHasOnImageMissing(images: RNMBXImages, value: Dynamic) {
+    override fun setHasOnImageMissing(images: RNMBXImages, value: Dynamic) {
         images.setHasOnImageMissing(value.asBoolean())
     }
 
@@ -192,7 +192,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
     }
 
     @ReactProp(name = "nativeImages")
-    fun setNativeImages(images: RNMBXImages, arr: Dynamic) {
+    override fun setNativeImages(images: RNMBXImages, arr: Dynamic) {
         val nativeImages = mutableListOf<NativeImage>();
         for (i in 0 until arr.asArray().size()) {
             val nativeImage = toNativeImage(arr.asArray().getDynamic(i))
@@ -203,7 +203,7 @@ class RNMBXImagesManager(private val mContext: ReactApplicationContext) :
         images.setNativeImages(nativeImages)
     }
 
-    fun customEvents(): Map<String, String>? { return eventMapOf(
+    override fun customEvents(): Map<String, String>? { return eventMapOf(
             EventKeys.IMAGES_MISSING to "onImageMissing"
         )
     }

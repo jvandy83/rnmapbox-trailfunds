@@ -10,11 +10,11 @@ import com.rnmapbox.rnmbx.utils.GeoJSONUtils.toLatLngQuad
 
 class RNMBXImageSourceManager : ViewGroupManager<RNMBXImageSource>(),
     RNMBXImageSourceManagerInterface<RNMBXImageSource> {
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    fun createViewInstance(reactContext: ThemedReactContext): RNMBXImageSource {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXImageSource {
         return RNMBXImageSource(reactContext)
     }
 
@@ -35,23 +35,23 @@ class RNMBXImageSourceManager : ViewGroupManager<RNMBXImageSource>(),
     }
 
     @ReactProp(name = "id")
-    fun setId(source: RNMBXImageSource, id: Dynamic) {
+    override fun setId(source: RNMBXImageSource, id: Dynamic) {
         source.iD = id.asString()
     }
 
     @ReactProp(name = "url")
-    fun setUrl(source: RNMBXImageSource, url: Dynamic) {
+    override fun setUrl(source: RNMBXImageSource, url: Dynamic) {
         source.setURL(url.asString())
     }
 
     @ReactProp(name = "coordinates")
-    fun setCoordinates(source: RNMBXImageSource, arr: Dynamic) {
+    override fun setCoordinates(source: RNMBXImageSource, arr: Dynamic) {
         val quad = toLatLngQuad(arr.asArray()) ?: return
         source.setCoordinates(quad)
     }
 
     @ReactProp(name = "existing")
-    fun setExisting(source: RNMBXImageSource, value: Dynamic) {
+    override fun setExisting(source: RNMBXImageSource, value: Dynamic) {
         source.mExisting = value.asBoolean()
     }
 

@@ -21,12 +21,12 @@ import com.rnmapbox.rnmbx.v11compat.location.*
 class RNMBXNativeUserLocationManager : ViewGroupManager<RNMBXNativeUserLocation>(),
     RNMBXNativeUserLocationManagerInterface<RNMBXNativeUserLocation> {
     @Nonnull
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
     @ReactProp(name = "androidRenderMode")
-    fun setAndroidRenderMode(userLocation: RNMBXNativeUserLocation, mode: Dynamic) {
+    override fun setAndroidRenderMode(userLocation: RNMBXNativeUserLocation, mode: Dynamic) {
         if (!mode.isNull) {
             Logger.e("RNMBXNativeUserLocationManager", "androidRenderMode is deprecated, use puckBearing instead")
         }
@@ -38,7 +38,7 @@ class RNMBXNativeUserLocationManager : ViewGroupManager<RNMBXNativeUserLocation>
     }
 
     @ReactProp(name = "puckBearing")
-    fun setPuckBearing(view: RNMBXNativeUserLocation, value: Dynamic) {
+    override fun setPuckBearing(view: RNMBXNativeUserLocation, value: Dynamic) {
         when (value?.asString()) {
             "heading" -> view.puckBearing = PuckBearing.HEADING
             "course" -> view.puckBearing = PuckBearing.COURSE
@@ -49,7 +49,7 @@ class RNMBXNativeUserLocationManager : ViewGroupManager<RNMBXNativeUserLocation>
     }
 
     @ReactProp(name = "puckBearingEnabled")
-    fun setPuckBearingEnabled(view: RNMBXNativeUserLocation, value: Dynamic) {
+    override fun setPuckBearingEnabled(view: RNMBXNativeUserLocation, value: Dynamic) {
         if (!value.isNull) {
             if (value.type == ReadableType.Boolean) {
                 view.puckBearingEnabled = value.asBoolean()
@@ -60,39 +60,39 @@ class RNMBXNativeUserLocationManager : ViewGroupManager<RNMBXNativeUserLocation>
     }
 
     @ReactProp(name = "topImage")
-    fun setTopImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
+    override fun setTopImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
         view.topImage = value?.asString()
     }
 
     @ReactProp(name = "bearingImage")
-    fun setBearingImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
+    override fun setBearingImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
         view.bearingImage = value?.asString()
     }
 
     @ReactProp(name = "shadowImage")
-    fun setShadowImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
+    override fun setShadowImage(view: RNMBXNativeUserLocation, value: Dynamic?) {
         view.shadowImage = value?.asString()
     }
 
     @ReactProp(name = "scale", defaultDouble = 1.0)
-    fun setScale(view: RNMBXNativeUserLocation, value: Dynamic?) {
+    override fun setScale(view: RNMBXNativeUserLocation, value: Dynamic?) {
         view.scale = _convertToDoubleValueOrExpression(value, "scale")
     }
 
     @ReactProp(name = "visible")
-    fun setVisible(view: RNMBXNativeUserLocation, value: Boolean) {
+    override fun setVisible(view: RNMBXNativeUserLocation, value: Boolean) {
         view.visible = value
     }
 
     @ReactProp(name = "pulsing")
-    fun setPulsing(view: RNMBXNativeUserLocation, value: Dynamic) {
+    override fun setPulsing(view: RNMBXNativeUserLocation, value: Dynamic) {
         if (!value.isNull) {
             view.pulsing = value.asMap()
         }
     }
 
     @Nonnull
-    fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXNativeUserLocation {
+    override fun createViewInstance(@Nonnull reactContext: ThemedReactContext): RNMBXNativeUserLocation {
         return RNMBXNativeUserLocation(reactContext)
     }
 

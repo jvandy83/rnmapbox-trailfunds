@@ -26,11 +26,11 @@ class RNMBXShapeSourceManager(private val mContext: ReactApplicationContext, val
     AbstractEventEmitter<RNMBXShapeSource>(
         mContext
     ), RNMBXShapeSourceManagerInterface<RNMBXShapeSource> {
-    fun getName(): String {
+    override fun getName(): String {
         return REACT_CLASS
     }
 
-    fun createViewInstance(reactContext: ThemedReactContext): RNMBXShapeSource {
+    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXShapeSource {
         return RNMBXShapeSource(reactContext, this)
     }
 
