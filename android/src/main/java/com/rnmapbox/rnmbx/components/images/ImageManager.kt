@@ -18,7 +18,7 @@ class Subscription(val name:String, val resolver: Resolver, val manager: ImageMa
     fun resolved(name: String, image: Image) {
         resolver.resolved(name, image)
     }
-    override fun cancel() {
+    fun cancel() {
         manager.unsubscribe(this)
     }
 }

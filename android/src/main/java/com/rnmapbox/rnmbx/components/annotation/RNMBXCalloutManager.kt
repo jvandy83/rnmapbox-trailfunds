@@ -15,15 +15,15 @@ class RNMBXCalloutManager : ViewGroupManager<RNMBXCallout>(),
         mDelegate = RNMBXCalloutManagerDelegate(this)
     }
 
-    override fun getDelegate(): ViewManagerDelegate<RNMBXCallout> {
+    fun getDelegate(): ViewManagerDelegate<RNMBXCallout> {
         return mDelegate
     }
 
-    override fun getName(): String {
+    fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXCallout {
+    fun createViewInstance(reactContext: ThemedReactContext): RNMBXCallout {
         return RNMBXCallout(reactContext)
     }
 

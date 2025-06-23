@@ -9,72 +9,72 @@ import com.facebook.react.viewmanagers.RNMBXModelLayerManagerInterface
 
 class RNMBXModelLayerManager : ViewGroupManager<RNMBXModelLayer>(),
     RNMBXModelLayerManagerInterface<RNMBXModelLayer> {
-    override fun getName(): String {
+    fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(context: ThemedReactContext): RNMBXModelLayer {
+    fun createViewInstance(context: ThemedReactContext): RNMBXModelLayer {
         return RNMBXModelLayer(context)
     }
 
     // @{codepart-replace-start(LayerManagerCommonProps.codepart-kt.ejs,{layerType:"RNMBXModelLayer"})}
     @ReactProp(name = "id")
-    override fun setId(layer: RNMBXModelLayer, id: Dynamic) {
+    fun setId(layer: RNMBXModelLayer, id: Dynamic) {
         layer.iD = id.asString()
     }
 
     @ReactProp(name = "existing")
-    override fun setExisting(layer: RNMBXModelLayer, existing: Dynamic) {
+    fun setExisting(layer: RNMBXModelLayer, existing: Dynamic) {
         layer.setExisting(existing.asBoolean())
     }
 
     @ReactProp(name = "sourceID")
-    override fun setSourceID(layer: RNMBXModelLayer, sourceID: Dynamic) {
+    fun setSourceID(layer: RNMBXModelLayer, sourceID: Dynamic) {
         layer.setSourceID(sourceID.asString())
     }
 
     @ReactProp(name = "aboveLayerID")
-    override fun setAboveLayerID(layer: RNMBXModelLayer, aboveLayerID: Dynamic) {
+    fun setAboveLayerID(layer: RNMBXModelLayer, aboveLayerID: Dynamic) {
         layer.setAboveLayerID(aboveLayerID.asString())
     }
 
     @ReactProp(name = "belowLayerID")
-    override fun setBelowLayerID(layer: RNMBXModelLayer, belowLayerID: Dynamic) {
+    fun setBelowLayerID(layer: RNMBXModelLayer, belowLayerID: Dynamic) {
         layer.setBelowLayerID(belowLayerID.asString())
     }
 
     @ReactProp(name = "layerIndex")
-    override fun setLayerIndex(layer: RNMBXModelLayer, layerIndex: Dynamic) {
+    fun setLayerIndex(layer: RNMBXModelLayer, layerIndex: Dynamic) {
         layer.setLayerIndex(layerIndex.asInt())
     }
 
     @ReactProp(name = "minZoomLevel")
-    override fun setMinZoomLevel(layer: RNMBXModelLayer, minZoomLevel: Dynamic) {
+    fun setMinZoomLevel(layer: RNMBXModelLayer, minZoomLevel: Dynamic) {
         layer.setMinZoomLevel(minZoomLevel.asDouble())
     }
 
     @ReactProp(name = "maxZoomLevel")
-    override fun setMaxZoomLevel(layer: RNMBXModelLayer, maxZoomLevel: Dynamic) {
+    fun setMaxZoomLevel(layer: RNMBXModelLayer, maxZoomLevel: Dynamic) {
         layer.setMaxZoomLevel(maxZoomLevel.asDouble())
     }
 
     @ReactProp(name = "reactStyle")
-    override fun setReactStyle(layer: RNMBXModelLayer, style: Dynamic) {
+    fun setReactStyle(layer: RNMBXModelLayer, style: Dynamic) {
         layer.setReactStyle(style.asMap())
     }
 
     @ReactProp(name = "sourceLayerID")
-    override fun setSourceLayerID(layer: RNMBXModelLayer, sourceLayerID: Dynamic) {
+    fun setSourceLayerID(layer: RNMBXModelLayer, sourceLayerID: Dynamic) {
         layer.setSourceLayerID(sourceLayerID.asString())
     }
 
     @ReactProp(name = "filter")
-    override fun setFilter(layer: RNMBXModelLayer, filterList: Dynamic) {
+    fun setFilter(layer: RNMBXModelLayer, filterList: Dynamic) {
         layer.setFilter(filterList.asArray())
     }
 
     @ReactProp(name = "slot")
-    override fun setSlot(layer: RNMBXModelLayer, slot: Dynamic) {
+    fun setSlot(layer: RNMBXModelLayer, slot: Dynamic) {
         layer.setSlot(slot.asString())
     }
     // @{codepart-replace-end}

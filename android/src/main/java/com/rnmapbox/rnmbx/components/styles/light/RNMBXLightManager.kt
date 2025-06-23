@@ -8,16 +8,16 @@ import com.facebook.react.viewmanagers.RNMBXLightManagerInterface
 
 class RNMBXLightManager : ViewGroupManager<RNMBXLight>(),
     RNMBXLightManagerInterface<RNMBXLight> {
-    override fun getName(): String {
+    fun getName(): String {
         return REACT_CLASS
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXLight {
+    fun createViewInstance(reactContext: ThemedReactContext): RNMBXLight {
         return RNMBXLight(reactContext)
     }
 
     @ReactProp(name = "reactStyle")
-    override fun setReactStyle(light: RNMBXLight, reactStyle: Dynamic) {
+    fun setReactStyle(light: RNMBXLight, reactStyle: Dynamic) {
         light.setReactStyle(reactStyle.asMap())
     }
 

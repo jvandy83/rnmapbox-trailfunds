@@ -28,45 +28,45 @@ class RNMBXMarkerViewManager(reactApplicationContext: ReactApplicationContext) :
         mDelegate = RNMBXMarkerViewManagerDelegate(this)
     }
 
-    override fun getDelegate(): ViewManagerDelegate<RNMBXMarkerView> {
+    fun getDelegate(): ViewManagerDelegate<RNMBXMarkerView> {
         return mDelegate
     }
 
-    override fun getName(): String {
+    fun getName(): String {
         return REACT_CLASS
     }
 
     @ReactProp(name = "coordinate")
-    override fun setCoordinate(markerView: RNMBXMarkerView, value: Dynamic) {
+    fun setCoordinate(markerView: RNMBXMarkerView, value: Dynamic) {
         val array = value.asArray()
         markerView.setCoordinate(toGNPointGeometry(LatLng(array.getDouble(1), array.getDouble(0))))
     }
 
     @ReactProp(name = "anchor")
-    override fun setAnchor(markerView: RNMBXMarkerView, map: Dynamic) {
+    fun setAnchor(markerView: RNMBXMarkerView, map: Dynamic) {
         markerView.setAnchor(map.asMap().getDouble("x").toFloat(), map.asMap().getDouble("y").toFloat())
     }
 
     @ReactProp(name = "allowOverlap")
-    override fun setAllowOverlap(markerView: RNMBXMarkerView, allowOverlap: Dynamic) {
+    fun setAllowOverlap(markerView: RNMBXMarkerView, allowOverlap: Dynamic) {
         markerView.setAllowOverlap(allowOverlap.asBoolean())
     }
 
     @ReactProp(name = "allowOverlapWithPuck")
-    override fun setAllowOverlapWithPuck(markerView: RNMBXMarkerView, allowOverlapWithPuck: Dynamic) {
+    fun setAllowOverlapWithPuck(markerView: RNMBXMarkerView, allowOverlapWithPuck: Dynamic) {
         markerView.setAllowOverlapWithPuck(allowOverlapWithPuck.asBoolean())
     }
 
     @ReactProp(name = "isSelected")
-    override fun setIsSelected(markerView: RNMBXMarkerView, isSelected: Dynamic) {
+    fun setIsSelected(markerView: RNMBXMarkerView, isSelected: Dynamic) {
         markerView.setIsSelected(isSelected.asBoolean())
     }
 
-    override fun createViewInstance(reactContext: ThemedReactContext): RNMBXMarkerView {
+    fun createViewInstance(reactContext: ThemedReactContext): RNMBXMarkerView {
         return RNMBXMarkerView(reactContext, this)
     }
 
-    override fun customEvents(): Map<String, String>? {
+    fun customEvents(): Map<String, String>? {
         return MapBuilder.builder<String, String>()
             .build()
     }
@@ -78,7 +78,7 @@ class RNMBXMarkerViewManager(reactApplicationContext: ReactApplicationContext) :
             // see https://github.com/rnmapbox/maps/issues/2376
             viewAnnotationManager.addOnViewAnnotationUpdatedListener(object :
                 OnViewAnnotationUpdatedListener() {
-                override fun onViewAnnotationVisibilityUpdated(view: View, visible: Boolean) {
+                fun onViewAnnotationVisibilityUpdated(view: View, visible: Boolean) {
                     val parent = view.parent
                     if (parent is FrameLayout) {
                         if ((parent.width == 0 && parent.height == 0) && (mapView.width != 0 || mapView.height != 0)) {
