@@ -227,7 +227,7 @@ class LocationManager private constructor(private val context: Context) : Locati
         }
         try {
             engine?.getLastLocation(object : LocationEngineCallback {
-                fun onSuccess(result: LocationEngineResult) {
+                override fun onSuccess(result: LocationEngineResult) {
                     if (result == null) {
                         callback.onFailure( NullPointerException("LocationEngineResult is null"))
                     } else {
@@ -235,7 +235,7 @@ class LocationManager private constructor(private val context: Context) : Locati
                     }
                 }
 
-                fun onFailure(exception: Exception) {
+                override fun onFailure(exception: Exception) {
                     callback.onFailure(exception)
                 }
             })
@@ -252,11 +252,11 @@ class LocationManager private constructor(private val context: Context) : Locati
         }
     }
 
-    fun onFailure(exception: Exception) {
+    override fun onFailure(exception: Exception) {
         // FMTODO handle this.
     }
 
-    fun onSuccess(result: LocationEngineResult) {
+    override fun onSuccess(result: LocationEngineResult) {
         onLocationChanged(result?.lastLocation)
         val provider = locationProvider
         if (provider != null && provider is LocationProviderForEngine) {
